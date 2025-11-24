@@ -1,9 +1,13 @@
 package htl.steyr.scheresteinpapier;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-public class GameController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class GameController implements Initializable {
     public Button reviewButton;
     public Button schereLeftButton;
     public Button steinLeftButton1;
@@ -12,11 +16,21 @@ public class GameController {
     public Button steinRightButton11;
     public Button papierRightButton11;
 
+    public Player pLeft = new Player();
+    public Player pRight = new Player();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+    }
+
 
     public void reviwOnButtonPressed(ActionEvent actionEvent) {
     }
 
     public void schereLeftOnButtonPressed(ActionEvent actionEvent) {
+        pLeft.setSelectedGesture();
     }
 
     public void steinLeftOnButtonPressed(ActionEvent actionEvent) {
@@ -33,4 +47,6 @@ public class GameController {
 
     public void papierRightOnButtonPressed(ActionEvent actionEvent) {
     }
+
+
 }
