@@ -6,12 +6,9 @@
 
 <AnchorPane fx:controller="htl.steyr.scheresteinpapier.GameController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="1042.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="reviewButton" layoutX="425.0" layoutY="672.0" mnemonicParsing="false" onAction="#reviwOnButtonPressed" prefHeight="57.0" prefWidth="190.0" text="Review" />
-      <Button fx:id="schereLeftButton" layoutX="55.0" layoutY="214.0" mnemonicParsing="false" onAction="#schereLeftOnButtonPressed" text="Schere" />
-      <Button fx:id="steinLeftButton1" layoutX="55.0" layoutY="277.0" mnemonicParsing="false" onAction="#steinLeftOnButtonPressed" text="Stein" />
-      <Button fx:id="papierLeftButton1" layoutX="55.0" layoutY="354.0" mnemonicParsing="false" onAction="#papierLeftOnButtonPressed" text="Papier" />
-      <Button fx:id="schereRightButton1" layoutX="863.0" layoutY="220.0" mnemonicParsing="false" onAction="#schereRightOnButtonPressed" text="Schere" />
-      <Button fx:id="steinRightButton11" layoutX="863.0" layoutY="283.0" mnemonicParsing="false" onAction="#steinRightOnButtonPressed" text="Stein" />
-      <Button fx:id="papierRightButton11" layoutX="863.0" layoutY="360.0" mnemonicParsing="false" onAction="#papierRightOnButtonPressed" text="Papier" />
+      <Button fx:id="reviewButton" layoutX="425.0" layoutY="672.0" mnemonicParsing="false" onAction="#reviwButtonPressed" prefHeight="57.0" prefWidth="190.0" text="Review" />
+      <Button fx:id="schereButton" layoutX="55.0" layoutY="214.0" mnemonicParsing="false" onAction="#schereButtonPressed" text="Schere" />
+      <Button fx:id="steinButton" layoutX="55.0" layoutY="277.0" mnemonicParsing="false" onAction="#steinButtonPressed" text="Stein" />
+      <Button fx:id="papierButton" layoutX="55.0" layoutY="354.0" mnemonicParsing="false" onAction="#papierButtonPressed" text="Papier" />
    </children>
 </AnchorPane>
