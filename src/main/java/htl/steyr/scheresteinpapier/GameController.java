@@ -4,6 +4,8 @@ import htl.steyr.scheresteinpapier.Model.Gesture;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
 
 public class GameController {
@@ -16,6 +18,9 @@ public class GameController {
 
     public Player player = new Player();
     public Player bot = new Player();
+    public ImageView playerShowGesture;
+    public ImageView botShowGesture;
+    public Button resetButton;
 
 
     public void schereButtonPressed(ActionEvent actionEvent) {
@@ -56,6 +61,17 @@ public class GameController {
         Bitte Ausprogrammieren:
         Soll die ausgewählte Gesture links groß anzeigen.
          */
+        switch(gesture.getGesture()){
+            case 0:
+                playerShowGesture.setImage(new Image("Schere.png"));
+                break;
+            case 1:
+                playerShowGesture.setImage(new Image("Stein.png"));
+                break;
+            case 2:
+                playerShowGesture.setImage(new Image("Papier.png"));
+                break;
+        }
     }
 
     public void showBotGesture(Gesture gesture){
@@ -63,6 +79,17 @@ public class GameController {
         Bitte Ausprogrammieren:
         Soll die Gesture vom Bot rechts groß anzeigen.
          */
+        switch(gesture.getGesture()){
+            case 0:
+                botShowGesture.setImage(new Image("Schere.png"));
+                break;
+            case 1:
+                botShowGesture.setImage(new Image("Stein.png"));
+                break;
+            case 2:
+                botShowGesture.setImage(new Image("Papier.png"));
+                break;
+        }
     }
 
 
