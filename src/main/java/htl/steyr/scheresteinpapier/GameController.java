@@ -32,10 +32,13 @@ public class GameController {
     }
 
     public void hideButtons(){
-        /*@TODO
+        /*
         Bitte Ausprogrammieren:
         Soll alle Buttons verstecken
          */
+        schereButton.setVisible(false);
+        steinButton.setVisible(false);
+        papierButton.setVisible(false);
     }
 
     public void showButtons(){
