@@ -7,8 +7,12 @@ public class Gesture {
      * 0 = Schere
      * 1 = Stein
      * 2 = Papier
+     * 3 = unset
      */
 
+    public Gesture() {
+        setGesture(3);
+    }
 
     public Gesture(int gesture) {
         setGesture(gesture);
