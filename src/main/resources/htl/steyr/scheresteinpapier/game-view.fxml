@@ -7,10 +7,9 @@
 
 <AnchorPane stylesheets="@style.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="1042.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.scheresteinpapier.GameController">
    <children>
-      <Button fx:id="reviewButton" layoutX="425.0" layoutY="672.0" mnemonicParsing="false" onAction="#reviwOnButtonPressed" prefHeight="57.0" prefWidth="190.0" text="Review" />
-      <Button fx:id="schereLeftButton" layoutX="343.0" layoutY="377.0" mnemonicParsing="false" onAction="#schereLeftOnButtonPressed" text="Schere" />
-      <Button fx:id="steinLeftButton1" layoutX="459.0" layoutY="377.0" mnemonicParsing="false" onAction="#steinLeftOnButtonPressed" text="Stein" />
-      <Button fx:id="papierLeftButton1" layoutX="565.0" layoutY="377.0" mnemonicParsing="false" onAction="#papierLeftOnButtonPressed" text="Papier" />
+      <Button fx:id="schereButton" layoutX="55.0" layoutY="214.0" mnemonicParsing="false" onAction="#schereButtonPressed" text="Schere" />
+      <Button fx:id="steinButton" layoutX="55.0" layoutY="277.0" mnemonicParsing="false" onAction="#steinButtonPressed" text="Stein" />
+      <Button fx:id="papierButton" layoutX="55.0" layoutY="354.0" mnemonicParsing="false" onAction="#papierButtonPressed" text="Papier" />
       <ProgressBar layoutX="421.0" layoutY="84.0" prefWidth="200.0" progress="0.0" />
       <Box depth="100" height="100" layoutX="343.0" layoutY="503.0" width="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
    </children>
