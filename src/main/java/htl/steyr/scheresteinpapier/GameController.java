@@ -46,6 +46,9 @@ public class GameController {
         Bitte Ausprogrammieren:
         Soll alle Buttons anzeigen
          */
+        schereButton.setVisible(true);
+        steinButton.setVisible(true);
+        papierButton.setVisible(true);
     }
 
     public void showSelectedGesture(Gesture gesture){
