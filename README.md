@@ -56,7 +56,7 @@ Im Projektordner:
 - Buttons:
     - `Schere`, `Stein`, `Papier` — wählt die Geste.
     - Nach Auswahl werden die Buttons ausgeblendet, Spieler- und Botgesten angezeigt und der Gewinner ermittelt.
-- Zurücksetzen: `Reset` (sofern implementiert).
+- Zurücksetzen: `Reset` - um es noch einmal zu versuchen.
 
 ---
 
