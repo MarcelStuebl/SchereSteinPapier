@@ -9,18 +9,15 @@ import javafx.scene.image.Image;
 
 
 public class GameController {
-    @FXML
     public Button schereButton;
-    @FXML
     public Button steinButton;
-    @FXML
     public Button papierButton;
-
-    public Player player = new Player();
-    public Player bot = new Player();
     public ImageView playerShowGesture;
     public ImageView botShowGesture;
     public Button resetButton;
+
+    public Player player = new Player();
+    public Player bot = new Player();
 
 
     public void schereButtonPressed(ActionEvent actionEvent) {
