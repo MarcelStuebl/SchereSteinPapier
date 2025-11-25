@@ -24,6 +24,9 @@ public class Gesture {
     public void setGesture(int gesture) {
         this.gesture = gesture;
     }
+    public int getGesture() {
+        return gesture;
+    }
 
 
 
