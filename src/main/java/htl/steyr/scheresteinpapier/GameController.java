@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 
+import java.io.InputStream;
+
 
 public class GameController {
     @FXML
@@ -56,39 +58,45 @@ public class GameController {
         papierButton.setVisible(true);
     }
 
+    private Image loadImage(String filename) {
+        String path = "/htl/steyr/scheresteinpapier/img/" + filename;
+        InputStream stream = getClass().getResourceAsStream(path);
+        if (stream == null) {
+            System.err.println("Resource not found: " + path);
+            return null;
+        }
+        return new Image(stream);
+    }
+
     public void showSelectedGesture(Gesture gesture){
-        /*@TODO
-        Bitte Ausprogrammieren:
-        Soll die ausgewählte Gesture links groß anzeigen.
-         */
         switch(gesture.getGesture()){
             case 0:
-                playerShowGesture.setImage(new Image("Schere.png"));
+                playerShowGesture.setImage(loadImage("Schere.png"));
                 break;
             case 1:
-                playerShowGesture.setImage(new Image("Stein.png"));
+                playerShowGesture.setImage(loadImage("Stein.png"));
                 break;
             case 2:
-                playerShowGesture.setImage(new Image("Papier.png"));
+                playerShowGesture.setImage(loadImage("Papier.png"));
                 break;
+            default:
+                playerShowGesture.setImage(null);
         }
     }
 
     public void showBotGesture(Gesture gesture){
-        /*@TODO
-        Bitte Ausprogrammieren:
-        Soll die Gesture vom Bot rechts groß anzeigen.
-         */
         switch(gesture.getGesture()){
             case 0:
-                botShowGesture.setImage(new Image("Schere.png"));
+                botShowGesture.setImage(loadImage("Schere.png"));
                 break;
             case 1:
-                botShowGesture.setImage(new Image("Stein.png"));
+                botShowGesture.setImage(loadImage("Stein.png"));
                 break;
             case 2:
-                botShowGesture.setImage(new Image("Papier.png"));
+                botShowGesture.setImage(loadImage("Papier.png"));
                 break;
+            default:
+                botShowGesture.setImage(null);
         }
     }
 
