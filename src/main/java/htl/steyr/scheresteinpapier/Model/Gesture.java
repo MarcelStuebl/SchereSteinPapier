@@ -13,7 +13,6 @@ public class Gesture {
     public Gesture() {
         setGesture(3);
     }
-
     public Gesture(int gesture) {
         setGesture(gesture);
     }
