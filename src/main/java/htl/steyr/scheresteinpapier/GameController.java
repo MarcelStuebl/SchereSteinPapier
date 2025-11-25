@@ -2,12 +2,16 @@ package htl.steyr.scheresteinpapier;
 
 import htl.steyr.scheresteinpapier.Model.Gesture;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 
 public class GameController {
+    @FXML
     public Button schereButton;
+    @FXML
     public Button steinButton;
+    @FXML
     public Button papierButton;
 
     public Player player = new Player();

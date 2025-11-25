@@ -38,7 +38,22 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-controls</artifactId>
+                <version>21.0.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-fxml</artifactId>
+                <version>21.0.6</version>
+            </dependency>
+
     </dependencies>
+
+
 
     <build>
         <plugins>
@@ -72,6 +87,17 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <mainClass>htl.steyr.scheresteinpapier.Launcher</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+
+
 </project>
