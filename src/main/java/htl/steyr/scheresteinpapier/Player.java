@@ -5,7 +5,7 @@ import htl.steyr.scheresteinpapier.Model.Gesture;
 import java.util.Random;
 
 public class Player {
-    Gesture gesture = null;
+    Gesture gesture = new Gesture();
 
     public void setSelectedGesture(Gesture gesture) {
         this.gesture = gesture;
@@ -24,13 +24,13 @@ public class Player {
         int randomGesture = rand.nextInt(3);
         switch (randomGesture) {
             case 0:
-                this.gesture = new Gesture(0);
+                this.gesture.setGesture(0);
                 break;
             case 1:
-                this.gesture = new Gesture(1);
+                this.gesture.setGesture(1);
                 break;
             case 2:
-                this.gesture = new Gesture(2);
+                this.gesture.setGesture(2);
                 break;
         }
 
