@@ -18,6 +18,7 @@ public class Player {
         return this.gesture;
     }
 
+
     public void setRandomGesture() {
         Random rand = new Random();
         int randomGesture = rand.nextInt(3);

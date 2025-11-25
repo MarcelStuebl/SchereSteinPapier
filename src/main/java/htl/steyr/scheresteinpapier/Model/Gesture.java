@@ -14,13 +14,12 @@ public class Gesture {
         setGesture(gesture);
     }
 
-    public int getGesture() {
+    public int getID() {
         return gesture;
     }
     public void setGesture(int gesture) {
         this.gesture = gesture;
     }
-
 
 
 

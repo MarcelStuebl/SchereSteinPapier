@@ -62,9 +62,74 @@ public class GameController {
          */
     }
 
+    public void playerWin(){
+        /*@TODO
+        Bitte Ausprogrammieren:
+        Ereignisse, die passieren, wenn der Player gewinnt.
+         */
+    }
+
+    public void botWin(){
+        /*@TODO
+        Bitte Ausprogrammieren:
+        Ereignisse, die passieren, wenn der Bot gewinnt.
+         */
+    }
+
+    public void drawWin(){
+        /*@TODO
+        Bitte Ausprogrammieren:
+        Ereignisse, die passieren, wenn Unentschieden.
+         */
+    }
+
 
     public void gestureSelected() {
+        hideButtons();
+        showSelectedGesture(player.getSelectedGesture());
+        bot.setRandomGesture();
+        revealWinner();
+    }
 
+    public void revealWinner(){
+        showBotGesture(bot.getSelectedGesture());
+        if (getWinner() == player) {
+            playerWin();
+        } else if (getWinner() == bot) {
+            botWin();
+        } else {
+            drawWin();
+        }
+    }
+
+    public Player getWinner() {
+        if (player.getSelectedGesture().getID() == 1 && bot.getSelectedGesture().getID() == 2) {
+            // Schere vs Stein.
+            // Bot gewinnt.
+            return bot;
+        }  else if (player.getSelectedGesture().getID() == 2 && bot.getSelectedGesture().getID() == 1) {
+            // Stein vs Schere.
+            // Player gewinnt.
+            return player;
+        } else if (player.getSelectedGesture().getID() == 1 && bot.getSelectedGesture().getID() == 3) {
+            // Schere vs Papier.
+            // Player gewinnt.
+            return player;
+        } else if (bot.getSelectedGesture().getID() == 1 && player.getSelectedGesture().getID() == 3) {
+            // Papier vs Schere.
+            // Bot gewinnt.
+            return bot;
+        } else if (player.getSelectedGesture().getID() == 2 && bot.getSelectedGesture().getID() == 3) {
+            // Stein vs Papier.
+            // Bot gewinnt.
+            return bot;
+        } else if (bot.getSelectedGesture().getID() == 2 && player.getSelectedGesture().getID() == 3) {
+            // Papier vs Stein.
+            // Player gewinnt.
+            return player;
+        }
+        // Unentschieden
+        return null;
     }
 
 
