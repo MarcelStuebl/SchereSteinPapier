@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="1042.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.scheresteinpapier.GameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="1042.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.scheresteinpapier.GameController">
    <children>
       <Button fx:id="schereButton" layoutX="215.0" layoutY="314.0" mnemonicParsing="false" onAction="#schereButtonPressed" prefHeight="150" prefWidth="150" styleClass="schere-button" text="" />
 
@@ -22,7 +22,7 @@
       <ImageView fx:id="botShowGesture" fitHeight="150.0" fitWidth="200.0" layoutX="807.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" />
       <Text layoutX="814.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ausgewählte Geste Computer" wrappingWidth="215.78126525878906" />
 
-       <Button fx:id="resetButton" layoutX="490.0" layoutY="157.0" mnemonicParsing="false" styleClass="reset-button" text="Reset" />
+       <Button fx:id="resetButton" layoutX="490.0" layoutY="157.0" mnemonicParsing="false" onAction="#resetButtonPressed" styleClass="reset-button" text="Reset" visible="false" />
 
       <Text layoutX="290.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Schere, Stein, Papier" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="291.59375" />
    </children>

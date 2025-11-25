@@ -33,6 +33,12 @@ public class GameController {
         player.setSelectedGesture(2);
         gestureSelected();
     }
+    public void resetButtonPressed(ActionEvent actionEvent) {
+        playerShowGesture.setVisible(false);
+        botShowGesture.setVisible(false);
+        showButtons();
+        resetButton.setVisible(false);
+    }
 
     public void hideButtons(){
         /*
@@ -134,6 +140,7 @@ public class GameController {
         } else {
             drawWin();
         }
+        resetButton.setVisible(true);
     }
 
     public Player getWinner() {
@@ -165,8 +172,6 @@ public class GameController {
         // Unentschieden
         return null;
     }
-
-
 
 
 }
