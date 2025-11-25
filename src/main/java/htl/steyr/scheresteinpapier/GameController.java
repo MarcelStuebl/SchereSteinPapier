@@ -71,6 +71,7 @@ public class GameController {
     }
 
     public void showSelectedGesture(Gesture gesture){
+        playerShowGesture.setVisible(true);
         switch(gesture.getGesture()){
             case 0:
                 playerShowGesture.setImage(loadImage("Schere.png"));
@@ -87,6 +88,7 @@ public class GameController {
     }
 
     public void showBotGesture(Gesture gesture){
+        botShowGesture.setVisible(true);
         switch(gesture.getGesture()){
             case 0:
                 botShowGesture.setImage(loadImage("Schere.png"));
