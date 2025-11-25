@@ -1,14 +1,11 @@
 package htl.steyr.scheresteinpapier;
 
+import htl.steyr.scheresteinpapier.Model.Gesture;
 import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class GameController implements Initializable {
-    public Button reviewButton;
+public class GameController {
     public Button schereButton;
     public Button steinButton;
     public Button papierButton;
@@ -16,27 +13,58 @@ public class GameController implements Initializable {
     public Player player = new Player();
     public Player bot = new Player();
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-    }
-
-
-    public void reviwButtonPressed(ActionEvent actionEvent) {
-    }
 
     public void schereButtonPressed(ActionEvent actionEvent) {
         player.setSelectedGesture(0);
+        gestureSelected();
     }
-
     public void steinButtonPressed(ActionEvent actionEvent) {
+        player.setSelectedGesture(1);
+        gestureSelected();
+    }
+    public void papierButtonPressed(ActionEvent actionEvent) {
+        player.setSelectedGesture(2);
+        gestureSelected();
     }
 
-    public void papierButtonPressed(ActionEvent actionEvent) {
+    public void hideButtons(){
+        /*@TODO
+        Bitte Ausprogrammieren:
+        Soll alle Buttons verstecken
+         */
+    }
+
+    public void showButtons(){
+        /*@TODO
+        Bitte Ausprogrammieren:
+        Soll alle Buttons anzeigen
+         */
+    }
+
+    public void showSelectedGesture(Gesture gesture){
+        /*@TODO
+        Bitte Ausprogrammieren:
+        Soll die ausgewählte Gesture links groß anzeigen.
+         */
+    }
+
+    public void showBotGesture(Gesture gesture){
+        /*@TODO
+        Bitte Ausprogrammieren:
+        Soll die Gesture vom Bot rechts groß anzeigen.
+         */
+    }
+
+
+    public void gestureSelected() {
+
     }
 
 
 
 
 }
+
+
+
+
