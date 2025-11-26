@@ -1,6 +1,7 @@
 package htl.steyr.scheresteinpapier;
 
 import htl.steyr.scheresteinpapier.Model.Gesture;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
@@ -8,6 +9,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 
 import java.io.InputStream;
+import java.util.Random;
+import java.util.concurrent.CountDownLatch;
 
 
 public class GameController {
@@ -127,6 +130,30 @@ public class GameController {
          */
     }
 
+    public void progressBarAnimation(int animationDuration) {
+        botProgressBar.setVisible(true);
+        botProgressBar.setProgress(0);
+
+        new Thread(() -> {
+
+            final int animationSteps = 10;
+
+            for (int i = 1; i <= animationSteps; i++) {
+                try {
+                    Thread.sleep(animationDuration / animationSteps);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                double progress = (double) i / animationSteps;
+                Platform.runLater(() -> botProgressBar.setProgress(progress));
+            }
+
+            Platform.runLater(() -> botProgressBar.setVisible(false));
+
+        }).start();
+    }
+
+
 
     public void gestureSelected() {
         hideButtons();
@@ -136,15 +163,29 @@ public class GameController {
     }
 
     public void revealWinner(){
-        showBotGesture(bot.getSelectedGesture());
-        if (getWinner() == player) {
-            playerWin();
-        } else if (getWinner() == bot) {
-            botWin();
-        } else {
-            drawWin();
-        }
-        resetButton.setVisible(true);
+        Random random = new Random();
+        final int animationDuration = 1000 + random.nextInt(3000);
+        progressBarAnimation(animationDuration);
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(animationDuration);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            showBotGesture(bot.getSelectedGesture());
+            if (getWinner() == player) {
+                playerWin();
+            } else if (getWinner() == bot) {
+                botWin();
+            } else {
+                drawWin();
+            }
+            resetButton.setVisible(true);
+        }).start();
+
+
+
     }
 
     public Player getWinner() {
