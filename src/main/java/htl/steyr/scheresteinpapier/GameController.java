@@ -3,6 +3,7 @@ package htl.steyr.scheresteinpapier;
 import htl.steyr.scheresteinpapier.Model.Gesture;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 
@@ -16,6 +17,7 @@ public class GameController {
     public ImageView playerShowGesture;
     public ImageView botShowGesture;
     public Button resetButton;
+    public ProgressBar botProgressBar;
 
     public Player player = new Player();
     public Player bot = new Player();
