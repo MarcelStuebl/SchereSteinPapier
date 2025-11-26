@@ -52,3 +52,7 @@
 .gesture-Icons {
     -fx-background-color-alignment: center;
 }
+
+.progressBar {
+    -fx-accent: black;
+}
