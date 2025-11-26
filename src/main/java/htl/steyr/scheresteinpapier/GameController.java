@@ -1,4 +1,6 @@
 package htl.steyr.scheresteinpapier;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import htl.steyr.scheresteinpapier.Model.Gesture;
 import javafx.application.Platform;
@@ -30,6 +32,23 @@ public class GameController {
 
     public Player player = new Player();
     public Player bot = new Player();
+
+        private MediaPlayer mediaPlayer;
+
+        public void initialize() {
+            playBackgroundMusic();
+        }
+
+        private void playBackgroundMusic() {
+            String path = getClass().getResource("/htl/steyr/scheresteinpapier/sound/lobby-classic-game.mp3").toExternalForm();
+            Media media = new Media(path);
+            mediaPlayer = new MediaPlayer(media);
+
+            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+            mediaPlayer.setVolume(0.25);
+
+            mediaPlayer.play();
+        }
 
 
     public void schereButtonPressed(ActionEvent actionEvent) {
