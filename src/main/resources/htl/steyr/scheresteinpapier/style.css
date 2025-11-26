@@ -4,11 +4,16 @@
     -fx-pref-width: 150px;
     -fx-pref-height: 150px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 20, 0.2, 0, 4);
-    -fx-padding: 0;
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 }
+
+.schere-button:hover, .stein-button:hover, .papier-button:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
 
 .schere-button {
     -fx-background-image: url('img/Schere.png');
@@ -42,9 +47,4 @@
 
 .gesture-Text {
     -fx-font-size: 18px;
-}
-
-.schere-button:hover, .stein-button:hover, .papier-button:hover {
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
 }

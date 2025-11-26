@@ -16,11 +16,11 @@
 
       <ProgressBar layoutX="421.0" layoutY="114.0" prefWidth="200.0" progress="0.0" />
 
-      <ImageView fx:id="playerShowGesture" fitHeight="150.0" fitWidth="200.0" layoutX="190.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="200.0" mouseTransparent="true"/>
-      <Text fx:id="textPlayerGesture" layoutX="190.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gesture-Text" text="Ausgewählte Geste" wrappingWidth="215.78126525878906" AnchorPane.leftAnchor="200.0" />
+      <ImageView fx:id="playerShowGesture" fitHeight="150.0" fitWidth="200.0" layoutX="190.0" layoutY="295.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="200.0" />
+      <Text fx:id="textPlayerGesture" layoutX="190.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gesture-Text" text="Ausgewählte Geste" visible="false" wrappingWidth="215.78126525878906" AnchorPane.leftAnchor="200.0" />
 
-      <ImageView fx:id="botShowGesture" fitHeight="150.0" fitWidth="200.0" layoutX="618.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="200.0" mouseTransparent="true"/>
-      <Text fx:id="textBotGesture" layoutX="596.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gesture-Text" text="Ausgewählte Geste Computer" wrappingWidth="245.3813018798828" AnchorPane.rightAnchor="200.0" />
+      <ImageView fx:id="botShowGesture" fitHeight="150.0" fitWidth="200.0" layoutX="618.0" layoutY="295.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="200.0" />
+      <Text fx:id="textBotGesture" layoutX="652.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gesture-Text" text="Ausgewählte Geste Computer" visible="false" wrappingWidth="245.3813018798828" AnchorPane.rightAnchor="144.6186981201172" />
 
        <Button fx:id="resetButton" layoutX="490.0" layoutY="157.0" mnemonicParsing="false" onAction="#resetButtonPressed" styleClass="reset-button" text="Reset" visible="false" />
 
