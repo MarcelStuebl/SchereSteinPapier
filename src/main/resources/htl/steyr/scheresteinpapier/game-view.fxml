@@ -15,7 +15,7 @@
 
       <Button fx:id="papierButton" layoutX="699.0" layoutY="593.0" mnemonicParsing="false" onAction="#papierButtonPressed" prefHeight="150" prefWidth="150" styleClass="papier-button" text="" AnchorPane.leftAnchor="699.0" />
 
-      <ProgressBar fx:id="botProgressBar" layoutX="421.0" layoutY="380.0" prefWidth="200.0" progress="0.0" styleClass="progressBar" />
+      <ProgressBar fx:id="botProgressBar" layoutX="421.0" layoutY="380.0" prefWidth="200.0" progress="0.0" styleClass="progressBar" visible="false" />
 
       <ImageView fx:id="playerShowGesture" fitHeight="150.0" fitWidth="200.0" layoutX="429.0" layoutY="593.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" styleClass="gesture-Icons" AnchorPane.leftAnchor="429.0" />
       <Text fx:id="textPlayerGesture" layoutX="429.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gesture-Text" text="Ausgewählte Geste" wrappingWidth="215.78126525878906" AnchorPane.leftAnchor="429.0" />
