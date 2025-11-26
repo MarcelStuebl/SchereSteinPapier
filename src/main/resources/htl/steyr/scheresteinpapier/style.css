@@ -48,3 +48,7 @@
 .gesture-Text {
     -fx-font-size: 18px;
 }
+
+.gesture-Icons {
+    -fx-background-color-alignment: center;
+}
