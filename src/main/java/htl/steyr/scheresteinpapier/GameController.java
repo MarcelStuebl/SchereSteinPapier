@@ -118,7 +118,6 @@ public class GameController {
     }
 
     public void playerWin(){
-        System.out.println("Player gewinnt!");
         highScoreTextField.setText(String.valueOf(Integer.parseInt(highScoreTextField.getText()) + 1));
         /*@TODO
         Bitte Ausprogrammieren:
@@ -127,7 +126,6 @@ public class GameController {
     }
 
     public void botWin(){
-        System.out.println("Bot gewinnt!");
         highScoreTextField.setText("0");
         /*@TODO
         Bitte Ausprogrammieren:
@@ -136,7 +134,6 @@ public class GameController {
     }
 
     public void drawWin(){
-        System.out.println("Unentschieden!");
         /*@TODO
         Bitte Ausprogrammieren:
         Ereignisse, die passieren, wenn Unentschieden.
