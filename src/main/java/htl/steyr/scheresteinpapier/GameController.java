@@ -23,29 +23,26 @@ public class GameController {
     public Button resetButton;
     public ProgressBar botProgressBar;
 
-    public Player player = new Player();
-    public Player bot = new Player();
     public Text textBotGesture;
     public Text textPlayerGesture;
+    public Text highScoreTextField;
+    public Button resetHighScoreButton;
+
+    public Player player = new Player();
+    public Player bot = new Player();
 
 
     public void schereButtonPressed(ActionEvent actionEvent) {
         player.setSelectedGesture(0);
         gestureSelected();
-        textPlayerGesture.setVisible(true);
-        textBotGesture.setVisible(true);
     }
     public void steinButtonPressed(ActionEvent actionEvent) {
         player.setSelectedGesture(1);
         gestureSelected();
-        textPlayerGesture.setVisible(true);
-        textBotGesture.setVisible(true);
     }
     public void papierButtonPressed(ActionEvent actionEvent) {
         player.setSelectedGesture(2);
         gestureSelected();
-        textPlayerGesture.setVisible(true);
-        textBotGesture.setVisible(true);
     }
     public void resetButtonPressed(ActionEvent actionEvent) {
         playerShowGesture.setVisible(false);
@@ -121,6 +118,8 @@ public class GameController {
     }
 
     public void playerWin(){
+        System.out.println("Player gewinnt!");
+        highScoreTextField.setText(String.valueOf(Integer.parseInt(highScoreTextField.getText()) + 1));
         /*@TODO
         Bitte Ausprogrammieren:
         Ereignisse, die passieren, wenn der Player gewinnt.
@@ -128,6 +127,8 @@ public class GameController {
     }
 
     public void botWin(){
+        System.out.println("Bot gewinnt!");
+        highScoreTextField.setText("0");
         /*@TODO
         Bitte Ausprogrammieren:
         Ereignisse, die passieren, wenn der Bot gewinnt.
@@ -135,6 +136,7 @@ public class GameController {
     }
 
     public void drawWin(){
+        System.out.println("Unentschieden!");
         /*@TODO
         Bitte Ausprogrammieren:
         Ereignisse, die passieren, wenn Unentschieden.
@@ -167,6 +169,9 @@ public class GameController {
 
 
     public void gestureSelected() {
+        textPlayerGesture.setVisible(true);
+        textBotGesture.setVisible(true);
+
         hideButtons();
         showSelectedGesture(player.getSelectedGesture());
         bot.setRandomGesture();
@@ -200,27 +205,27 @@ public class GameController {
     }
 
     public Player getWinner() {
-        if (player.getSelectedGesture().getID() == 1 && bot.getSelectedGesture().getID() == 2) {
+        if (player.getSelectedGesture().getID() == 0 && bot.getSelectedGesture().getID() == 1) {
             // Schere vs Stein.
             // Bot gewinnt.
             return bot;
-        }  else if (player.getSelectedGesture().getID() == 2 && bot.getSelectedGesture().getID() == 1) {
+        }  else if (player.getSelectedGesture().getID() == 1 && bot.getSelectedGesture().getID() == 0) {
             // Stein vs Schere.
             // Player gewinnt.
             return player;
-        } else if (player.getSelectedGesture().getID() == 1 && bot.getSelectedGesture().getID() == 3) {
+        } else if (player.getSelectedGesture().getID() == 0 && bot.getSelectedGesture().getID() == 2) {
             // Schere vs Papier.
             // Player gewinnt.
             return player;
-        } else if (bot.getSelectedGesture().getID() == 1 && player.getSelectedGesture().getID() == 3) {
+        } else if (bot.getSelectedGesture().getID() == 0 && player.getSelectedGesture().getID() == 2) {
             // Papier vs Schere.
             // Bot gewinnt.
             return bot;
-        } else if (player.getSelectedGesture().getID() == 2 && bot.getSelectedGesture().getID() == 3) {
+        } else if (player.getSelectedGesture().getID() == 1 && bot.getSelectedGesture().getID() == 2) {
             // Stein vs Papier.
             // Bot gewinnt.
             return bot;
-        } else if (bot.getSelectedGesture().getID() == 2 && player.getSelectedGesture().getID() == 3) {
+        } else if (bot.getSelectedGesture().getID() == 1 && player.getSelectedGesture().getID() == 2) {
             // Papier vs Stein.
             // Player gewinnt.
             return player;
@@ -230,6 +235,9 @@ public class GameController {
     }
 
 
+    public void resetHighScoreButtonPressed(ActionEvent actionEvent) {
+        highScoreTextField.setText("0");
+    }
 }
 
 

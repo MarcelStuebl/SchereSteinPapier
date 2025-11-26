@@ -4,9 +4,10 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="1042.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.scheresteinpapier.GameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="1042.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.scheresteinpapier.GameController">
    <children>
       <Button fx:id="schereButton" layoutX="215.0" layoutY="314.0" mnemonicParsing="false" onAction="#schereButtonPressed" prefHeight="150" prefWidth="150" styleClass="schere-button" text="" AnchorPane.rightAnchor="700.0" />
 
@@ -25,5 +26,16 @@
        <Button fx:id="resetButton" layoutX="490.0" layoutY="157.0" mnemonicParsing="false" onAction="#resetButtonPressed" styleClass="reset-button" text="Reset" visible="false" />
 
       <Text layoutX="290.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Schere, Stein, Papier" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="291.59375" />
+      <Text layoutX="28.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highscore: " wrappingWidth="171.1999877929686">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <Text fx:id="highScoreTextField" layoutX="65.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <Button fx:id="resetHighScoreButton" layoutX="47.0" layoutY="145.0" mnemonicParsing="false" onAction="#resetHighScoreButtonPressed" text="RESET SCORE" />
    </children>
 </AnchorPane>
