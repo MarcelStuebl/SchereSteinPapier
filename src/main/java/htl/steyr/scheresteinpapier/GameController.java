@@ -26,6 +26,7 @@ public class GameController {
     public Text textPlayerGesture;
     public Text highScoreTextField;
     public Button resetHighScoreButton;
+    public Text winnerTextField;
 
     public Player player = new Player();
     public Player bot = new Player();
@@ -50,6 +51,7 @@ public class GameController {
         resetButton.setVisible(false);
         textBotGesture.setVisible(false);
         textPlayerGesture.setVisible(false);
+        winnerTextField.setText("");
     }
 
     public void hideButtons(){
@@ -118,25 +120,16 @@ public class GameController {
 
     public void playerWin(){
         highScoreTextField.setText(String.valueOf(Integer.parseInt(highScoreTextField.getText()) + 1));
-        /*@TODO
-        Bitte Ausprogrammieren:
-        Ereignisse, die passieren, wenn der Player gewinnt.
-         */
+        winnerTextField.setText("You Win!");
     }
 
     public void botWin(){
         highScoreTextField.setText("0");
-        /*@TODO
-        Bitte Ausprogrammieren:
-        Ereignisse, die passieren, wenn der Bot gewinnt.
-         */
+        winnerTextField.setText("You Lose!");
     }
 
     public void drawWin(){
-        /*@TODO
-        Bitte Ausprogrammieren:
-        Ereignisse, die passieren, wenn Unentschieden.
-         */
+        winnerTextField.setText("Draw!");
     }
 
     public void progressBarAnimation(int animationDuration) {
@@ -195,9 +188,6 @@ public class GameController {
             }
             resetButton.setVisible(true);
         }).start();
-
-
-
     }
 
     public Player getWinner() {
