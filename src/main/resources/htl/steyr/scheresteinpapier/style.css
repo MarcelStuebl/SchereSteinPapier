@@ -53,6 +53,13 @@
     -fx-background-color-alignment: center;
 }
 
-.progressBar {
-    -fx-accent: black;
+.progressBar > .track {
+    -fx-background-color: rgba(0,0,0,0.1);
+    -fx-background-radius: 12px;
+}
+
+.progressBar > .bar {
+    -fx-background-color: linear-gradient(to right, #42a5f5, #1e88e5);
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.2, 0, 2);
 }
