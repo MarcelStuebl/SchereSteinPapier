@@ -1,28 +1,30 @@
-.schere-button {
-    -fx-background-image: url('img/Schere.png');
+.schere-button, .stein-button, .papier-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 150px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 20, 0.2, 0, 4);
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-color: transparent;
-    -fx-padding: 0;
+}
+
+.schere-button:hover, .stein-button:hover, .papier-button:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+
+.schere-button {
+    -fx-background-image: url('img/Schere.png');
 }
 
 .stein-button {
     -fx-background-image: url('img/Stein.png');
-    -fx-background-size: contain;
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
-    -fx-background-color: transparent;
-    -fx-padding: 0;
 }
 
 .papier-button {
     -fx-background-image: url('img/Papier.png');
-    -fx-background-size: contain;
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
-    -fx-background-color: transparent;
-    -fx-padding: 0;
 }
 
 .AnchorPane {
@@ -41,4 +43,8 @@
     -fx-font-weight: bold;
     -fx-text-fill: black;
     -fx-font-family: Lucida Console;
+}
+
+.gesture-Text {
+    -fx-font-size: 18px;
 }

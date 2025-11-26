@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 
 import java.io.InputStream;
 
@@ -19,25 +20,35 @@ public class GameController {
 
     public Player player = new Player();
     public Player bot = new Player();
+    public Text textBotGesture;
+    public Text textPlayerGesture;
 
 
     public void schereButtonPressed(ActionEvent actionEvent) {
         player.setSelectedGesture(0);
         gestureSelected();
+        textPlayerGesture.setVisible(true);
+        textBotGesture.setVisible(true);
     }
     public void steinButtonPressed(ActionEvent actionEvent) {
         player.setSelectedGesture(1);
         gestureSelected();
+        textPlayerGesture.setVisible(true);
+        textBotGesture.setVisible(true);
     }
     public void papierButtonPressed(ActionEvent actionEvent) {
         player.setSelectedGesture(2);
         gestureSelected();
+        textPlayerGesture.setVisible(true);
+        textBotGesture.setVisible(true);
     }
     public void resetButtonPressed(ActionEvent actionEvent) {
         playerShowGesture.setVisible(false);
         botShowGesture.setVisible(false);
         showButtons();
         resetButton.setVisible(false);
+        textBotGesture.setVisible(false);
+        textPlayerGesture.setVisible(false);
     }
 
     public void hideButtons(){
