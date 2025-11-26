@@ -8,19 +8,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="1042.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.scheresteinpapier.GameController">
    <children>
-      <Button fx:id="schereButton" layoutX="215.0" layoutY="314.0" mnemonicParsing="false" onAction="#schereButtonPressed" prefHeight="150" prefWidth="150" styleClass="schere-button" text="" />
+      <Button fx:id="schereButton" layoutX="215.0" layoutY="314.0" mnemonicParsing="false" onAction="#schereButtonPressed" prefHeight="150" prefWidth="150" styleClass="schere-button" text="" AnchorPane.rightAnchor="700.0" />
 
-      <Button fx:id="steinButton" layoutX="446.0" layoutY="314.0" mnemonicParsing="false" onAction="#steinButtonPressed" prefHeight="150" prefWidth="150" styleClass="stein-button" text="" />
+      <Button fx:id="steinButton" layoutX="446.0" layoutY="314.0" mnemonicParsing="false" onAction="#steinButtonPressed" prefHeight="150" prefWidth="150" styleClass="stein-button" text="" AnchorPane.leftAnchor="446.0" AnchorPane.rightAnchor="445.8" />
 
-      <Button fx:id="papierButton" layoutX="664.0" layoutY="314.0" mnemonicParsing="false" onAction="#papierButtonPressed" prefHeight="150" prefWidth="150" styleClass="papier-button" text="" />
+      <Button fx:id="papierButton" layoutX="664.0" layoutY="314.0" mnemonicParsing="false" onAction="#papierButtonPressed" prefHeight="150" prefWidth="150" styleClass="papier-button" text="" AnchorPane.leftAnchor="700.0" />
 
       <ProgressBar layoutX="421.0" layoutY="114.0" prefWidth="200.0" progress="0.0" />
 
-      <ImageView fx:id="playerShowGesture" fitHeight="150.0" fitWidth="200.0" layoutX="190.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true" />
-      <Text fx:id="textPlayerGesture" layoutX="190.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ausgewählte Geste" visible="false" wrappingWidth="215.78126525878906" />
+      <ImageView fx:id="playerShowGesture" fitHeight="150.0" fitWidth="200.0" layoutX="190.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="200.0" />
+      <Text fx:id="textPlayerGesture" layoutX="190.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gesture-Text" text="Ausgewählte Geste" wrappingWidth="215.78126525878906" AnchorPane.leftAnchor="200.0" />
 
-      <ImageView fx:id="botShowGesture" fitHeight="150.0" fitWidth="200.0" layoutX="596.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true" />
-      <Text fx:id="textBotGesture" layoutX="596.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ausgewählte Geste Computer" visible="false" wrappingWidth="215.78126525878906" />
+      <ImageView fx:id="botShowGesture" fitHeight="150.0" fitWidth="200.0" layoutX="618.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="200.0" />
+      <Text fx:id="textBotGesture" layoutX="596.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gesture-Text" text="Ausgewählte Geste Computer" wrappingWidth="245.3813018798828" AnchorPane.rightAnchor="200.0" />
 
        <Button fx:id="resetButton" layoutX="490.0" layoutY="157.0" mnemonicParsing="false" onAction="#resetButtonPressed" styleClass="reset-button" text="Reset" visible="false" />
 

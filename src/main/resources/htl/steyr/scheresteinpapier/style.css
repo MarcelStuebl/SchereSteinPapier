@@ -42,3 +42,7 @@
     -fx-text-fill: black;
     -fx-font-family: Lucida Console;
 }
+
+.gesture-Text {
+    -fx-font-size: 18px;
+}
