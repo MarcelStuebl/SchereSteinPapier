@@ -13,7 +13,6 @@ import javafx.scene.text.Text;
 
 import java.io.InputStream;
 import java.util.Random;
-import java.util.concurrent.CountDownLatch;
 
 
 public class GameController {
