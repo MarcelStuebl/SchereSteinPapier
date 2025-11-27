@@ -1,4 +1,8 @@
 package htl.steyr.scheresteinpapier;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.input.DragEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -30,13 +34,27 @@ public class GameController {
     public Button resetHighScoreButton;
     public Text winnerTextField;
 
+    public ScrollBar volumeScrollBar;
+    private MediaPlayer mediaPlayer;
+
     public Player player = new Player();
     public Player bot = new Player();
 
-    private MediaPlayer mediaPlayer;
 
     public void initialize() {
         playBackgroundMusic();
+
+        // Event listener für die ScrollBar hinzufügen
+        volumeScrollBar.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                volumeScrollBarInputChanged(newValue.doubleValue());
+            }
+        });
+    }
+
+    private void volumeScrollBarInputChanged(double newValue) {
+        mediaPlayer.setVolume(newValue);
     }
 
     private void playBackgroundMusic() {
@@ -242,6 +260,8 @@ public class GameController {
     public void resetHighScoreButtonPressed(ActionEvent actionEvent) {
         highScoreTextField.setText("0");
     }
+
+
 }
 
 
