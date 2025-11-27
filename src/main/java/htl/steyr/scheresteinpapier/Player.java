@@ -21,7 +21,7 @@ public class Player {
 
     public void setRandomGesture() {
         Random rand = new Random();
-        int randomGesture = rand.nextInt(3);
+        int randomGesture = rand.nextInt(4);
         switch (randomGesture) {
             case 0:
                 this.gesture.setGesture(0);

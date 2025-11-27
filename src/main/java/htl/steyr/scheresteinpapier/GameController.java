@@ -1,6 +1,6 @@
 package htl.steyr.scheresteinpapier;
 
-import javafx.event.ActionEvent;
+import com.google.gson.Gson;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -13,7 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 
-import java.io.InputStream;
+import java.io.*;
 import java.util.Objects;
 import java.util.Random;
 import java.util.logging.Logger;
@@ -29,19 +29,21 @@ public class GameController {
     public Button resetButton;
     public ProgressBar botProgressBar;
 
-    public Text textBotGesture;
-    public Text textPlayerGesture;
-    public Text highScoreTextField;
+    public Text globalHighScoreTextField;
+    public Text currentHighScoreTextField;
     public Text winnerTextField;
 
     public ScrollBar volumeScrollBar;
     private MediaPlayer mediaPlayer;
+
+    private static final String FILE_NAME = ".stats";
 
     public Player player = new Player();
     public Player bot = new Player();
 
 
     public void initialize() {
+        globalHighScoreTextField.setText("" + loadHighscore());
         playBackgroundMusic();
 
         // Event listener auf Value für die ScrollBar hinzufügen
@@ -64,6 +66,33 @@ public class GameController {
         mediaPlayer.play();
     }
 
+    public void saveHighScore() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
+            writer.write(String.valueOf(globalHighScoreTextField.getText()));
+        } catch (IOException e) {
+            System.err.println("Fehler beim Speichern: " + e.getMessage());
+        }
+    }
+    public int loadHighscore() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+            String line = reader.readLine();
+            if (line != null && !line.isEmpty()) {
+                return Integer.parseInt(line);
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Kein Highscore gefunden, starte bei 0.");
+        }
+        return 0;
+    }
+    public void isHighScoreBeaten() {
+        int currentScore = Integer.parseInt(currentHighScoreTextField.getText());
+        int globalHighScore = Integer.parseInt(globalHighScoreTextField.getText());
+        if (currentScore > globalHighScore) {
+            globalHighScoreTextField.setText(String.valueOf(currentScore));
+            saveHighScore();
+        }
+    }
+
     public void schereButtonPressed() {
         player.setSelectedGesture(0);
         gestureSelected();
@@ -79,7 +108,7 @@ public class GameController {
         gestureSelected();
     }
 
-    public void brunnenButtonPressed(ActionEvent actionEvent) {
+    public void brunnenButtonPressed() {
         player.setSelectedGesture(3);
         gestureSelected();
     }
@@ -90,8 +119,6 @@ public class GameController {
         botShowGesture.setVisible(false);
         showButtons();
         resetButton.setVisible(false);
-        textBotGesture.setVisible(false);
-        textPlayerGesture.setVisible(false);
         winnerTextField.setText("");
     }
 
@@ -143,12 +170,14 @@ public class GameController {
 
 
     public void playerWin() {
-        highScoreTextField.setText(String.valueOf(Integer.parseInt(highScoreTextField.getText()) + 1));
+        currentHighScoreTextField.setText(String.valueOf(Integer.parseInt(currentHighScoreTextField.getText()) + 1));
+        isHighScoreBeaten();
         winnerTextField.setText("You Win!");
     }
 
     public void botWin() {
-        highScoreTextField.setText("0");
+        currentHighScoreTextField.setText("0");
+        isHighScoreBeaten();
         winnerTextField.setText("You Lose!");
     }
 
@@ -182,9 +211,6 @@ public class GameController {
 
 
     public void gestureSelected() {
-        textPlayerGesture.setVisible(true);
-        textBotGesture.setVisible(true);
-
         hideButtons();
         showGesture(player.getSelectedGesture(), playerShowGesture);
         bot.setRandomGesture();
