@@ -13,7 +13,7 @@
 
 ---
 
-[Features](#-features) • [Installation](#-installation) • [How to Play](#-how-to-play) • [Architecture](#-architecture) • [Authors](#-authors)
+[Features](#-features) • [Installation](#-installation) • [How to Play](#-how-to-play) • [Architecture](#️-architecture) • [Authors](#-authors)
 
 </div>
 
