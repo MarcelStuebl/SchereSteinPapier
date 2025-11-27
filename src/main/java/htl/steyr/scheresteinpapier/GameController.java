@@ -1,13 +1,11 @@
 package htl.steyr.scheresteinpapier;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+
 import javafx.scene.control.ScrollBar;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import htl.steyr.scheresteinpapier.Model.Gesture;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -17,6 +15,7 @@ import javafx.scene.text.Text;
 import java.io.InputStream;
 import java.util.Objects;
 import java.util.Random;
+import java.util.logging.Logger;
 
 
 public class GameController {
@@ -45,12 +44,8 @@ public class GameController {
         playBackgroundMusic();
 
         // Event listener für die ScrollBar hinzufügen
-        volumeScrollBar.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                volumeScrollBarInputChanged(newValue.doubleValue());
-            }
-        });
+        volumeScrollBar.valueProperty().addListener((observable, oldValue, newValue)
+                -> volumeScrollBarInputChanged(newValue.doubleValue()));
     }
 
     private void volumeScrollBarInputChanged(double newValue) {
@@ -68,19 +63,22 @@ public class GameController {
     }
 
 
-    public void schereButtonPressed(ActionEvent actionEvent) {
+    public void schereButtonPressed() {
         player.setSelectedGesture(0);
         gestureSelected();
     }
-    public void steinButtonPressed(ActionEvent actionEvent) {
+
+    public void steinButtonPressed() {
         player.setSelectedGesture(1);
         gestureSelected();
     }
-    public void papierButtonPressed(ActionEvent actionEvent) {
+
+    public void papierButtonPressed() {
         player.setSelectedGesture(2);
         gestureSelected();
     }
-    public void resetButtonPressed(ActionEvent actionEvent) {
+
+    public void resetButtonPressed() {
         playerShowGesture.setVisible(false);
         botShowGesture.setVisible(false);
         showButtons();
@@ -90,7 +88,7 @@ public class GameController {
         winnerTextField.setText("");
     }
 
-    public void hideButtons(){
+    public void hideButtons() {
         /*
         Bitte Ausprogrammieren:
         Soll alle Buttons verstecken
@@ -100,7 +98,7 @@ public class GameController {
         papierButton.setVisible(false);
     }
 
-    public void showButtons(){
+    public void showButtons() {
         /*@TODO
         Bitte Ausprogrammieren:
         Soll alle Buttons anzeigen
@@ -120,51 +118,34 @@ public class GameController {
         return new Image(stream);
     }
 
-    public void showSelectedGesture(Gesture gesture){
-        playerShowGesture.setVisible(true);
-        switch(gesture.getGesture()){
+    public void showGesture(Gesture gesture, ImageView view) {
+        view.setVisible(true);
+        switch (gesture.getGesture()) {
             case 0:
-                playerShowGesture.setImage(loadImage("Schere.png"));
+                view.setImage(loadImage("Schere.png"));
                 break;
             case 1:
-                playerShowGesture.setImage(loadImage("Stein.png"));
+                view.setImage(loadImage("Stein.png"));
                 break;
             case 2:
-                playerShowGesture.setImage(loadImage("Papier.png"));
+                view.setImage(loadImage("Papier.png"));
                 break;
             default:
-                playerShowGesture.setImage(null);
+                view.setImage(null);
         }
     }
 
-    public void showBotGesture(Gesture gesture){
-        botShowGesture.setVisible(true);
-        switch(gesture.getGesture()){
-            case 0:
-                botShowGesture.setImage(loadImage("Schere.png"));
-                break;
-            case 1:
-                botShowGesture.setImage(loadImage("Stein.png"));
-                break;
-            case 2:
-                botShowGesture.setImage(loadImage("Papier.png"));
-                break;
-            default:
-                botShowGesture.setImage(null);
-        }
-    }
-
-    public void playerWin(){
+    public void playerWin() {
         highScoreTextField.setText(String.valueOf(Integer.parseInt(highScoreTextField.getText()) + 1));
         winnerTextField.setText("You Win!");
     }
 
-    public void botWin(){
+    public void botWin() {
         highScoreTextField.setText("0");
         winnerTextField.setText("You Lose!");
     }
 
-    public void drawWin(){
+    public void drawWin() {
         winnerTextField.setText("Draw!");
     }
 
@@ -180,7 +161,7 @@ public class GameController {
                 try {
                     Thread.sleep(animationDuration / animationSteps);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    Logger.getLogger(getClass().getName()).severe("Animation interrupted: " + e.getMessage());
                 }
                 double progress = (double) i / animationSteps;
                 Platform.runLater(() -> botProgressBar.setProgress(progress));
@@ -192,18 +173,17 @@ public class GameController {
     }
 
 
-
     public void gestureSelected() {
         textPlayerGesture.setVisible(true);
         textBotGesture.setVisible(true);
 
         hideButtons();
-        showSelectedGesture(player.getSelectedGesture());
+        showGesture(player.getSelectedGesture(), playerShowGesture);
         bot.setRandomGesture();
         revealWinner();
     }
 
-    public void revealWinner(){
+    public void revealWinner() {
         Random random = new Random();
         final int animationDuration = 1000 + random.nextInt(3000);
         progressBarAnimation(animationDuration);
@@ -214,7 +194,7 @@ public class GameController {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            showBotGesture(bot.getSelectedGesture());
+            showGesture(bot.getSelectedGesture(), botShowGesture);
             if (getWinner() == player) {
                 playerWin();
             } else if (getWinner() == bot) {
@@ -231,7 +211,7 @@ public class GameController {
             // Schere vs Stein.
             // Bot gewinnt.
             return bot;
-        }  else if (player.getSelectedGesture().getID() == 1 && bot.getSelectedGesture().getID() == 0) {
+        } else if (player.getSelectedGesture().getID() == 1 && bot.getSelectedGesture().getID() == 0) {
             // Stein vs Schere.
             // Player gewinnt.
             return player;
@@ -257,7 +237,7 @@ public class GameController {
     }
 
 
-    public void resetHighScoreButtonPressed(ActionEvent actionEvent) {
+    public void resetHighScoreButtonPressed() {
         highScoreTextField.setText("0");
     }
 
