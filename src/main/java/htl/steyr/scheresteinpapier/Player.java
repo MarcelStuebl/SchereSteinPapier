@@ -11,10 +11,6 @@ public class Player {
         return this.gesture;
     }
 
-    public void setSelectedGesture(Gesture gesture) {
-        this.gesture = gesture;
-    }
-
     public void setSelectedGesture(int gesture) {
         this.gesture.setGesture(gesture);
     }
