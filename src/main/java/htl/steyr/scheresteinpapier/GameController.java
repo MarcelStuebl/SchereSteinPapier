@@ -218,8 +218,8 @@ public class GameController {
         if (playerGestureID == botGestureID) return null;               // Unentschieden
         if (playerGestureID == 3 && (botGestureID == 0 || botGestureID == 1)) return player; // Brunnen schlägt Schere und Stein
         if (botGestureID == 3 && (playerGestureID == 0 || playerGestureID == 1)) return bot; // Brunnen schlägt Schere und Stein
-        if (playerGestureID == 2 && botGestureID == 3) return player;   // Papier schlägt Brunnen
-        if (botGestureID == 2 && playerGestureID == 3) return bot;      // Papier schlägt Brunnen
+        if (playerGestureID == 2 && botGestureID == 3) return player;   // Papier vs Brunnen
+        if (botGestureID == 2 && playerGestureID == 3) return bot;      // Papier vs Brunnen
         if (playerGestureID == 0 && botGestureID == 1) return bot;      // Schere vs Stein
         if (playerGestureID == 1 && botGestureID == 0) return player;   // Stein vs Schere
         if (playerGestureID == 0 && botGestureID == 2) return player;   // Schere vs Papier
