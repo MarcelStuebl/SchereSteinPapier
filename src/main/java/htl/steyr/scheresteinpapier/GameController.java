@@ -58,7 +58,7 @@ public class GameController {
         mediaPlayer = new MediaPlayer(media);
 
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.setVolume(0.25);
+        mediaPlayer.setVolume(volumeScrollBar.getValue());
         mediaPlayer.play();
     }
 
