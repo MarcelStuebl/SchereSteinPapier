@@ -1,6 +1,5 @@
 package htl.steyr.scheresteinpapier;
 
-import com.google.gson.Gson;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
