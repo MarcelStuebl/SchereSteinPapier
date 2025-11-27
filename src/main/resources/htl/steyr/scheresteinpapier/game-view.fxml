@@ -6,42 +6,39 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="1042.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.scheresteinpapier.GameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="1000.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.scheresteinpapier.GameController">
    <children>
-      <Button fx:id="schereButton" layoutX="112.0" layoutY="593.0" mnemonicParsing="false" onAction="#schereButtonPressed" prefHeight="150" prefWidth="150" styleClass="schere-button" AnchorPane.rightAnchor="780.0" />
+      <Button fx:id="schereButton" layoutX="112.0" layoutY="593.0" mnemonicParsing="false" onAction="#schereButtonPressed" prefHeight="150" prefWidth="150" styleClass="schere-button" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="100.0" />
    
-      <Button fx:id="steinButton" layoutX="322.0" layoutY="593.0" mnemonicParsing="false" onAction="#steinButtonPressed" prefHeight="150" prefWidth="150" styleClass="stein-button" AnchorPane.leftAnchor="322.0" AnchorPane.rightAnchor="570.0" />
+      <Button fx:id="steinButton" layoutX="290.0" layoutY="593.0" mnemonicParsing="false" onAction="#steinButtonPressed" prefHeight="150" prefWidth="150" styleClass="stein-button" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="300.0" />
    
-      <Button fx:id="papierButton" layoutX="523.0" layoutY="593.0" mnemonicParsing="false" onAction="#papierButtonPressed" prefHeight="150" prefWidth="150" styleClass="papier-button" AnchorPane.leftAnchor="523.0" />
+      <Button fx:id="papierButton" layoutX="500.0" layoutY="593.0" mnemonicParsing="false" onAction="#papierButtonPressed" prefHeight="150" prefWidth="150.0" styleClass="papier-button" AnchorPane.bottomAnchor="36.0" AnchorPane.rightAnchor="300.0" />
    
       <ProgressBar fx:id="botProgressBar" layoutX="421.0" layoutY="380.0" prefWidth="200.0" progress="0.0" styleClass="progressBar" visible="false" />
    
-      <ImageView fx:id="playerShowGesture" fitHeight="150.0" fitWidth="200.0" layoutX="398.0" layoutY="593.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" styleClass="gesture-Icons" AnchorPane.leftAnchor="398.0" />
-      <Text fx:id="textPlayerGesture" layoutX="429.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gesture-Text" text="Ausgewählte Geste" wrappingWidth="215.78126525878906" AnchorPane.leftAnchor="429.0" />
+      <ImageView fx:id="playerShowGesture" fitHeight="150.0" fitWidth="150.0" layoutX="425.0" layoutY="593.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" styleClass="gesture-Icons" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="425.0" AnchorPane.rightAnchor="425.0" />
    
-      <ImageView fx:id="botShowGesture" fitHeight="150.0" fitWidth="200.0" layoutX="398.0" layoutY="124.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" styleClass="gesture-Icons" AnchorPane.rightAnchor="444.0" />
-      <Text fx:id="textBotGesture" layoutX="398.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gesture-Text" text="Ausgewählte Geste Computer" wrappingWidth="245.3813018798828" AnchorPane.rightAnchor="398.6186981201172" />
+      <ImageView fx:id="botShowGesture" fitHeight="150.0" fitWidth="150.0" layoutX="290.0" layoutY="173.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" styleClass="gesture-Icons" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="602.0" />
    
       <Button fx:id="resetButton" layoutX="65.0" layoutY="248.0" mnemonicParsing="false" onAction="#resetButtonPressed" prefHeight="37.0" prefWidth="74.0" styleClass="reset-button" text="Reset" visible="false" />
    
-      <Text layoutX="290.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Schere, Stein, Papier" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="291.59375" />
-      <Text layoutX="16.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highscore: " wrappingWidth="171.1999877929686">
+      <Text layoutX="270.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Schere, Stein, Papier" textAlignment="CENTER" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="269.59375" AnchorPane.topAnchor="32.0" />
+      <Text layoutX="34.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highscore" wrappingWidth="132.1999877929686" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="32.0">
          <font>
             <Font size="28.0" />
          </font>
       </Text>
-      <Text fx:id="highScoreTextField" layoutX="65.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+      <Text fx:id="highScoreTextField" layoutX="84.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="71.78515625">
          <font>
             <Font size="28.0" />
          </font>
       </Text>
-      <Button fx:id="resetHighScoreButton" layoutX="47.0" layoutY="145.0" mnemonicParsing="false" onAction="#resetHighScoreButtonPressed" text="RESET SCORE" />
-      <Text fx:id="winnerTextField" layoutX="58.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="879.2574402093887" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0">
+      <Text fx:id="winnerTextField" layoutX="60.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="879.2574402093887" AnchorPane.bottomAnchor="368.455078125" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.74255979061127" AnchorPane.topAnchor="349.361328125">
          <font>
             <Font size="46.0" />
          </font>
       </Text>
-      <ScrollBar fx:id="volumeScrollBar" layoutX="16.0" layoutY="563.0" max="1.0" orientation="VERTICAL" prefHeight="202.0" prefWidth="34.0" rotate="180.0" value="0.5" />
-      <Button fx:id="brunnenButton" layoutX="750.0" layoutY="593.0" mnemonicParsing="false" onAction="#brunnenButtonPressed" prefHeight="150" prefWidth="150" styleClass="brunnen-button" />
+      <ScrollBar fx:id="volumeScrollBar" layoutX="16.0" layoutY="563.0" max="1.0" orientation="VERTICAL" prefHeight="202.0" prefWidth="34.0" rotate="180.0" value="0.5" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" />
+      <Button fx:id="brunnenButton" layoutX="750.0" layoutY="593.0" mnemonicParsing="false" onAction="#brunnenButtonPressed" prefHeight="150" prefWidth="150" styleClass="brunnen-button" AnchorPane.bottomAnchor="36.0" AnchorPane.rightAnchor="100.0" />
    </children>
 </AnchorPane>
