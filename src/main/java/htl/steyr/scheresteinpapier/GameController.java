@@ -43,7 +43,7 @@ public class GameController {
     public void initialize() {
         playBackgroundMusic();
 
-        // Event listener für die ScrollBar hinzufügen
+        // Event listener auf Value für die ScrollBar hinzufügen
         volumeScrollBar.valueProperty().addListener((observable, oldValue, newValue)
                 -> volumeScrollBarInputChanged(newValue.doubleValue()));
     }
