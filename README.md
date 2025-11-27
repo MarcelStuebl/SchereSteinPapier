@@ -4,14 +4,12 @@
 
 ### A Modern JavaFX Desktop Game
 
-[![Java](https://img. shields.io/badge/Java-17+-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
+[![Java](https://img.shields.io/badge/Java-17+-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
 [![JavaFX](https://img.shields.io/badge/JavaFX-21-007396?style=for-the-badge&logo=java&logoColor=white)](https://openjfx.io/)
-[![Maven](https://img. shields.io/badge/Maven-3. 9+-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)](https://maven.apache.org/)
-[![License](https://img. shields.io/badge/License-Educational-blue? style=for-the-badge)](LICENSE)
+[![Maven](https://img.shields.io/badge/Maven-3.9+-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)](https://maven.apache.org/)
+[![License](https://img.shields.io/badge/License-Educational-blue?style=for-the-badge)](LICENSE)
 
 *A classic hand game with a twist – featuring the "Well" extension! *
-
-**Built with ❤️ at HTBLA Steyr**
 
 ---
 
