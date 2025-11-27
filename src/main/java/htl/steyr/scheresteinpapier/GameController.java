@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 
 import java.io.InputStream;
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -58,7 +59,7 @@ public class GameController {
     }
 
     private void playBackgroundMusic() {
-        String path = getClass().getResource("/htl/steyr/scheresteinpapier/sound/lobby-classic-game.mp3").toExternalForm();
+        String path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/lobby-classic-game.mp3")).toExternalForm();
         Media media = new Media(path);
         mediaPlayer = new MediaPlayer(media);
 
