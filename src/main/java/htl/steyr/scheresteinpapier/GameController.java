@@ -48,6 +48,7 @@ public class GameController {
                 -> volumeScrollBarInputChanged(newValue.doubleValue()));
     }
 
+
     private void volumeScrollBarInputChanged(double newValue) {
         mediaPlayer.setVolume(newValue);
     }
@@ -61,7 +62,6 @@ public class GameController {
         mediaPlayer.setVolume(volumeScrollBar.getValue());
         mediaPlayer.play();
     }
-
 
     public void schereButtonPressed() {
         player.setSelectedGesture(0);
@@ -78,6 +78,7 @@ public class GameController {
         gestureSelected();
     }
 
+
     public void resetButtonPressed() {
         playerShowGesture.setVisible(false);
         botShowGesture.setVisible(false);
@@ -88,25 +89,23 @@ public class GameController {
         winnerTextField.setText("");
     }
 
+    public void resetHighScoreButtonPressed() {
+        highScoreTextField.setText("0");
+    }
+
+
     public void hideButtons() {
-        /*
-        Bitte Ausprogrammieren:
-        Soll alle Buttons verstecken
-         */
         schereButton.setVisible(false);
         steinButton.setVisible(false);
         papierButton.setVisible(false);
     }
 
     public void showButtons() {
-        /*@TODO
-        Bitte Ausprogrammieren:
-        Soll alle Buttons anzeigen
-         */
         schereButton.setVisible(true);
         steinButton.setVisible(true);
         papierButton.setVisible(true);
     }
+
 
     private Image loadImage(String filename) {
         String path = "/htl/steyr/scheresteinpapier/img/" + filename;
@@ -117,6 +116,7 @@ public class GameController {
         }
         return new Image(stream);
     }
+
 
     public void showGesture(Gesture gesture, ImageView view) {
         view.setVisible(true);
@@ -135,6 +135,7 @@ public class GameController {
         }
     }
 
+
     public void playerWin() {
         highScoreTextField.setText(String.valueOf(Integer.parseInt(highScoreTextField.getText()) + 1));
         winnerTextField.setText("You Win!");
@@ -148,6 +149,7 @@ public class GameController {
     public void drawWin() {
         winnerTextField.setText("Draw!");
     }
+
 
     public void progressBarAnimation(int animationDuration) {
         botProgressBar.setVisible(true);
@@ -183,6 +185,7 @@ public class GameController {
         revealWinner();
     }
 
+
     public void revealWinner() {
         Random random = new Random();
         final int animationDuration = 1000 + random.nextInt(3000);
@@ -205,6 +208,7 @@ public class GameController {
             resetButton.setVisible(true);
         }).start();
     }
+
 
     public Player getWinner() {
         if (player.getSelectedGesture().getID() == 0 && bot.getSelectedGesture().getID() == 1) {
@@ -234,11 +238,6 @@ public class GameController {
         }
         // Unentschieden
         return null;
-    }
-
-
-    public void resetHighScoreButtonPressed() {
-        highScoreTextField.setText("0");
     }
 
 
