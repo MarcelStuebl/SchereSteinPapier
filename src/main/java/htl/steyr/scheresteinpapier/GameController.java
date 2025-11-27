@@ -1,5 +1,6 @@
 package htl.steyr.scheresteinpapier;
 
+import javafx.event.ActionEvent;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -22,6 +23,7 @@ public class GameController {
     public Button schereButton;
     public Button steinButton;
     public Button papierButton;
+    public Button brunnenButton;
     public ImageView playerShowGesture;
     public ImageView botShowGesture;
     public Button resetButton;
@@ -78,6 +80,11 @@ public class GameController {
         gestureSelected();
     }
 
+    public void brunnenButtonPressed(ActionEvent actionEvent) {
+        player.setSelectedGesture(3);
+        gestureSelected();
+    }
+
 
     public void resetButtonPressed() {
         playerShowGesture.setVisible(false);
@@ -98,12 +105,14 @@ public class GameController {
         schereButton.setVisible(false);
         steinButton.setVisible(false);
         papierButton.setVisible(false);
+        brunnenButton.setVisible(false);
     }
 
     public void showButtons() {
         schereButton.setVisible(true);
         steinButton.setVisible(true);
         papierButton.setVisible(true);
+        brunnenButton.setVisible(true);
     }
 
 
@@ -129,6 +138,9 @@ public class GameController {
                 break;
             case 2:
                 view.setImage(loadImage("Papier.png"));
+                break;
+            case 3:
+                view.setImage(loadImage("Brunnen.png"));
                 break;
             default:
                 view.setImage(null);
@@ -229,7 +241,6 @@ public class GameController {
 
         return null; // Sollte nie erreicht werden
     }
-
 
 
 }
