@@ -7,7 +7,8 @@ public class Gesture {
      * 0 = Schere
      * 1 = Stein
      * 2 = Papier
-     * 3 = unset
+     * 3 = Brunnen
+     * 4 = unset
      */
 
     public Gesture() {

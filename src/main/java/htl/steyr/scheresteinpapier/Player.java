@@ -32,6 +32,9 @@ public class Player {
             case 2:
                 this.gesture.setGesture(2);
                 break;
+            case 3:
+                this.gesture.setGesture(3);
+                break;
         }
 
     }

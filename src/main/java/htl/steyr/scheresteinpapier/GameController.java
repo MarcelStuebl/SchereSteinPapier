@@ -211,34 +211,25 @@ public class GameController {
 
 
     public Player getWinner() {
-        if (player.getSelectedGesture().getID() == 0 && bot.getSelectedGesture().getID() == 1) {
-            // Schere vs Stein.
-            // Bot gewinnt.
-            return bot;
-        } else if (player.getSelectedGesture().getID() == 1 && bot.getSelectedGesture().getID() == 0) {
-            // Stein vs Schere.
-            // Player gewinnt.
-            return player;
-        } else if (player.getSelectedGesture().getID() == 0 && bot.getSelectedGesture().getID() == 2) {
-            // Schere vs Papier.
-            // Player gewinnt.
-            return player;
-        } else if (bot.getSelectedGesture().getID() == 0 && player.getSelectedGesture().getID() == 2) {
-            // Papier vs Schere.
-            // Bot gewinnt.
-            return bot;
-        } else if (player.getSelectedGesture().getID() == 1 && bot.getSelectedGesture().getID() == 2) {
-            // Stein vs Papier.
-            // Bot gewinnt.
-            return bot;
-        } else if (bot.getSelectedGesture().getID() == 1 && player.getSelectedGesture().getID() == 2) {
-            // Papier vs Stein.
-            // Player gewinnt.
-            return player;
-        }
-        // Unentschieden
-        return null;
+        int playerGestureID = player.getSelectedGesture().getID();
+        int botGestureID = bot.getSelectedGesture().getID();
+        // Schere = 0, Stein = 1, Papier = 2, Brunnen = 3
+
+        if (playerGestureID == botGestureID) return null;               // Unentschieden
+        if (playerGestureID == 3 && (botGestureID == 0 || botGestureID == 1)) return player; // Brunnen schlägt Schere und Stein
+        if (botGestureID == 3 && (playerGestureID == 0 || playerGestureID == 1)) return bot; // Brunnen schlägt Schere und Stein
+        if (playerGestureID == 2 && botGestureID == 3) return player;   // Papier schlägt Brunnen
+        if (botGestureID == 2 && playerGestureID == 3) return bot;      // Papier schlägt Brunnen
+        if (playerGestureID == 0 && botGestureID == 1) return bot;      // Schere vs Stein
+        if (playerGestureID == 1 && botGestureID == 0) return player;   // Stein vs Schere
+        if (playerGestureID == 0 && botGestureID == 2) return player;   // Schere vs Papier
+        if (playerGestureID == 2 && botGestureID == 0) return bot;      // Papier vs Schere
+        if (playerGestureID == 1 && botGestureID == 2) return bot;      // Stein vs Papier
+        if (playerGestureID == 2 && botGestureID == 1) return player;   // Papier vs Stein
+
+        return null; // Sollte nie erreicht werden
     }
+
 
 
 }
