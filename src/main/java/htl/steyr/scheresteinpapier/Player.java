@@ -7,17 +7,17 @@ import java.util.Random;
 public class Player {
     Gesture gesture = new Gesture();
 
-    public void setSelectedGesture(Gesture gesture) {
-        this.gesture = gesture;
-    }
-    public void setSelectedGesture(int gesture) {
-        this.gesture.setGesture(gesture);
-    }
-
     public Gesture getSelectedGesture() {
         return this.gesture;
     }
 
+    public void setSelectedGesture(Gesture gesture) {
+        this.gesture = gesture;
+    }
+
+    public void setSelectedGesture(int gesture) {
+        this.gesture.setGesture(gesture);
+    }
 
     public void setRandomGesture() {
         Random rand = new Random();
@@ -38,8 +38,6 @@ public class Player {
         }
 
     }
-
-
 
 
 }

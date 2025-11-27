@@ -1,15 +1,14 @@
 package htl.steyr.scheresteinpapier;
 
-import javafx.scene.control.ScrollBar;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-
 import htl.steyr.scheresteinpapier.Model.Gesture;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 
 import java.io.*;
@@ -72,6 +71,7 @@ public class GameController {
             System.err.println("Fehler beim Speichern: " + e.getMessage());
         }
     }
+
     public int loadHighscore() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
             String line = reader.readLine();
@@ -83,6 +83,7 @@ public class GameController {
         }
         return 0;
     }
+
     public void isHighScoreBeaten() {
         int currentScore = Integer.parseInt(currentHighScoreTextField.getText());
         int globalHighScore = Integer.parseInt(globalHighScoreTextField.getText());
