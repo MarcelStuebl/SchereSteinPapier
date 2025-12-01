@@ -91,3 +91,13 @@
     -fx-background-insets: 0 6 0 6;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);
 }
+
+.globalHigh, .currentHigh {
+    -fx-fill: chocolate;
+    -fx-font-size: 30px;
+}
+
+.winText {
+    -fx-fill: olivedrab;
+    -fx-font-weight: bold;
+}
