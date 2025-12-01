@@ -53,7 +53,7 @@ public class GameController {
         songChoiceComboBox.setValue("Lobby Classic");
         playBackgroundMusic(songChoiceComboBox.getValue());
 
-        // Event listener auf Value für die ScrollBar hinzufügen um Volumen zu ändern
+        // Event listener auf Value für die ScrollBar hinzufügen, um Volumen zu ändern
         volumeScrollBar.valueProperty().addListener((observable, oldValue, newValue)
                 -> mediaPlayer.setVolume(newValue.doubleValue()));
     }
