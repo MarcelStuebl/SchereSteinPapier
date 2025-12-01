@@ -257,15 +257,25 @@ SchereSteinPapier/
   <tr>
     <td align="center">
       <a href="https://github.com/MarcelStuebl">
-        <sub><b>Marcel STÜBL</b></sub>
-      </a><br />
-      <a href="mailto:mstuebl@htl-steyr.ac.at">📧 Email</a>
+        <img src="https://github.com/MarcelStuebl.png" width="100px;" style="border-radius:50%;" alt="Marcel Stübl"/>
+      </a>
+      <br />
+      <h3>Marcel STÜBL</h3>
+      <a href="mailto:mstuebl@htl-steyr.ac.at">📧 mstuebl@htl-steyr. ac.at</a>
+      <br />
+      <a href="https://github.com/MarcelStuebl">
+      </a>
     </td>
     <td align="center">
       <a href="https://github.com/1Mauritz2">
-        <sub><b>Moritz RASCHKO</b></sub>
-      </a><br />
-      <a href="mailto:mraschk1@htl-steyr.ac.at">📧 Email</a>
+        <img src="https://github.com/1Mauritz2.png" width="100px;" style="border-radius:50%;" alt="Moritz Raschko"/>
+      </a>
+      <br />
+      <h3>Moritz RASCHKO</h3>
+      <a href="mailto:mraschk1@htl-steyr.ac.at">📧 mraschk1@htl-steyr.ac.at</a>
+      <br />
+      <a href="https://github.com/1Mauritz2">
+      </a>
     </td>
   </tr>
 </table>
