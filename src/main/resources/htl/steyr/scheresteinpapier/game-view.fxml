@@ -32,19 +32,19 @@
             <Font size="28.0" />
          </font>
       </Text>
-      <Text fx:id="globalHighScoreTextField" layoutX="84.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="71.78515625">
+      <Text fx:id="globalHighScoreTextField" layoutX="84.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="71.78515625" styleClass="globalHigh">
          <font>
             <Font size="28.0" />
          </font>
       </Text>
-      <Text fx:id="winnerTextField" layoutX="60.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="879.2574402093887" AnchorPane.bottomAnchor="368.455078125" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.74255979061127" AnchorPane.topAnchor="349.361328125">
+      <Text fx:id="winnerTextField" layoutX="60.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="879.2574402093887" AnchorPane.bottomAnchor="368.455078125" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.74255979061127" AnchorPane.topAnchor="349.361328125" styleClass="WinText">
          <font>
             <Font size="46.0" />
          </font>
       </Text>
       <ScrollBar fx:id="volumeScrollBar" blockIncrement="0.1" layoutX="16.0" layoutY="563.0" max="1.0" orientation="VERTICAL" prefHeight="202.0" prefWidth="34.0" rotate="180.0" unitIncrement="0.1" value="0.5" visibleAmount="0.1" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" styleClass="Volume-Bar"/>
       <Button fx:id="brunnenButton" layoutX="750.0" layoutY="593.0" mnemonicParsing="false" onAction="#brunnenButtonPressed" prefHeight="150" prefWidth="150" styleClass="brunnen-button" AnchorPane.bottomAnchor="36.0" AnchorPane.rightAnchor="100.0" />
-      <Text fx:id="currentHighScoreTextField" layoutX="86.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+      <Text fx:id="currentHighScoreTextField" layoutX="86.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" styleClass="currentHigh">
          <font>
             <Font size="28.0" />
          </font>
