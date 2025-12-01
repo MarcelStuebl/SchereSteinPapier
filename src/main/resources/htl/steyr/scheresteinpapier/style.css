@@ -82,14 +82,16 @@
 }
 
 .progressBar > .track {
-    -fx-background-color: rgba(0,0,0,0.1);
-    -fx-background-radius: 12px;
+    -fx-background-color: wheat;
+    -fx-background-radius: 8px;
+    -fx-border-color: tan;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
 }
 
 .progressBar > .bar {
-    -fx-background-color: linear-gradient(to right, #42a5f5, #1e88e5);
-    -fx-background-radius: 12px;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.2, 0, 2);
+    -fx-background-color: chocolate;
+    -fx-background-radius: 6px;
 }
 
 .Volume-Bar {
