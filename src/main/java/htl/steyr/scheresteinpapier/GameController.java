@@ -2,7 +2,9 @@ package htl.steyr.scheresteinpapier;
 
 import htl.steyr.scheresteinpapier.Model.Gesture;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.image.Image;
@@ -32,6 +34,7 @@ public class GameController {
     public Text winnerTextField;
 
     public ScrollBar volumeScrollBar;
+    public ComboBox songChoiceComboBox;
     private MediaPlayer mediaPlayer;
 
     private static final String FILE_NAME = ".stats";
@@ -46,7 +49,9 @@ public class GameController {
      */
     public void initialize() {
         globalHighScoreTextField.setText("" + loadHighscore());
-        playBackgroundMusic();
+        songChoiceComboBox.getItems().addAll("Lobby Classic", "Song 2", "Song 3");
+        songChoiceComboBox.setValue("Lobby Classic");
+        playBackgroundMusic(songChoiceComboBox.getValue().toString());
 
         // Event listener auf Value für die ScrollBar hinzufügen um Volumen zu ändern
         volumeScrollBar.valueProperty().addListener((observable, oldValue, newValue)
@@ -57,14 +62,27 @@ public class GameController {
      * Play background music.
      * Loads and plays the background music in a loop.
      */
-    private void playBackgroundMusic() {
-        String path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/lobby-classic-game.mp3")).toExternalForm();
+    private void playBackgroundMusic(String song) {
+        String path = "";
+        if (Objects.equals(song, "Lobby Classic")) {
+            path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/lobby-classic-game.mp3")).toExternalForm();
+        } else  if (Objects.equals(song, "Song 2")) {
+            path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/song2.mp3")).toExternalForm();
+        } else  if (Objects.equals(song, "Song 3")) {
+            path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/song3.mp3")).toExternalForm();
+        }
+
         Media media = new Media(path);
         mediaPlayer = new MediaPlayer(media);
 
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.setVolume(volumeScrollBar.getValue());
         mediaPlayer.play();
+    }
+
+
+    public void songChosenComboBox(ActionEvent actionEvent) {
+        playBackgroundMusic(songChoiceComboBox.getValue().toString());
     }
 
     /**
