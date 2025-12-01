@@ -86,6 +86,7 @@ public class GameController {
 
 
     public void songChosenComboBox(ActionEvent actionEvent) {
+        mediaPlayer.stop();
         playBackgroundMusic(songChoiceComboBox.getValue().toString());
     }
 
