@@ -40,20 +40,23 @@ public class GameController {
     public Player bot = new Player();
 
 
+    /**
+     * Initialize.
+     * Loads highscore and starts background music.
+     */
     public void initialize() {
         globalHighScoreTextField.setText("" + loadHighscore());
         playBackgroundMusic();
 
-        // Event listener auf Value für die ScrollBar hinzufügen
+        // Event listener auf Value für die ScrollBar hinzufügen um Volumen zu ändern
         volumeScrollBar.valueProperty().addListener((observable, oldValue, newValue)
-                -> volumeScrollBarInputChanged(newValue.doubleValue()));
+                -> mediaPlayer.setVolume(newValue.doubleValue()));
     }
 
-
-    private void volumeScrollBarInputChanged(double newValue) {
-        mediaPlayer.setVolume(newValue);
-    }
-
+    /**
+     * Play background music.
+     * Loads and plays the background music in a loop.
+     */
     private void playBackgroundMusic() {
         String path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/lobby-classic-game.mp3")).toExternalForm();
         Media media = new Media(path);
@@ -64,6 +67,10 @@ public class GameController {
         mediaPlayer.play();
     }
 
+    /**
+     * Save high score.
+     * Saves the current global high score to a .stats file.
+     */
     public void saveHighScore() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
             writer.write(String.valueOf(globalHighScoreTextField.getText()));
@@ -72,6 +79,12 @@ public class GameController {
         }
     }
 
+    /**
+     * Load highscore int from .stats file.
+     * If no file exists, returns 0.
+     *
+     * @return the highscore as int
+     */
     public int loadHighscore() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
             String line = reader.readLine();
@@ -84,6 +97,11 @@ public class GameController {
         return 0;
     }
 
+    /**
+     * Is high score beaten.
+     * Checks if the current score is higher than the global high score.
+     * If so, updates the global high score and saves it.
+     */
     public void isHighScoreBeaten() {
         int currentScore = Integer.parseInt(currentHighScoreTextField.getText());
         int globalHighScore = Integer.parseInt(globalHighScoreTextField.getText());
@@ -93,27 +111,48 @@ public class GameController {
         }
     }
 
+    /**
+     * Schere button pressed.
+     * Sets player's selected gesture to Schere and proceeds.
+     */
     public void schereButtonPressed() {
         player.setSelectedGesture(0);
         gestureSelected();
     }
 
+    /**
+     * Stein button pressed.
+     * Sets player's selected gesture to Stein and proceeds.
+     */
     public void steinButtonPressed() {
         player.setSelectedGesture(1);
         gestureSelected();
     }
 
+    /**
+     * Papier button pressed.
+     * Sets player's selected gesture to Papier and proceeds.
+     */
     public void papierButtonPressed() {
         player.setSelectedGesture(2);
         gestureSelected();
     }
 
+    /**
+     * Brunnen button pressed.
+     * Sets player's selected gesture to Brunnen and proceeds.
+     */
     public void brunnenButtonPressed() {
         player.setSelectedGesture(3);
         gestureSelected();
     }
 
 
+    /**
+     * Reset button pressed.
+     * Resets the game state for a new round.
+     * Hides the gestures, shows the buttons, and clears the winner text.
+     */
     public void resetButtonPressed() {
         playerShowGesture.setVisible(false);
         botShowGesture.setVisible(false);
@@ -122,6 +161,10 @@ public class GameController {
         winnerTextField.setText("");
     }
 
+    /**
+     * Hide buttons.
+     * Hides the gesture selection buttons.
+     */
     public void hideButtons() {
         schereButton.setVisible(false);
         steinButton.setVisible(false);
@@ -129,6 +172,10 @@ public class GameController {
         brunnenButton.setVisible(false);
     }
 
+    /**
+     * Show buttons.
+     * Shows the gesture selection buttons.
+     */
     public void showButtons() {
         schereButton.setVisible(true);
         steinButton.setVisible(true);
@@ -136,7 +183,13 @@ public class GameController {
         brunnenButton.setVisible(true);
     }
 
-
+    /**
+     * Load image from resources.
+     * Loads an image given its filename from the resources folder.
+     *
+     * @param filename the filename
+     * @return the image
+     */
     private Image loadImage(String filename) {
         String path = "/htl/steyr/scheresteinpapier/img/" + filename;
         InputStream stream = getClass().getResourceAsStream(path);
@@ -148,6 +201,13 @@ public class GameController {
     }
 
 
+    /**
+     * Show gesture.
+     * Displays the gesture image in the given ImageView.
+     *
+     * @param gesture the gesture
+     * @param view    the view
+     */
     public void showGesture(Gesture gesture, ImageView view) {
         view.setVisible(true);
         switch (gesture.getGesture()) {
@@ -169,23 +229,41 @@ public class GameController {
     }
 
 
+    /**
+     * Player win.
+     * Increases current high score by 1, checks for global high score update, and sets winner text.
+     */
     public void playerWin() {
         currentHighScoreTextField.setText(String.valueOf(Integer.parseInt(currentHighScoreTextField.getText()) + 1));
         isHighScoreBeaten();
         winnerTextField.setText("You Win!");
     }
 
+    /**
+     * Bot win.
+     * Resets current high score to 0, checks for global high score update, and sets winner text.
+     */
     public void botWin() {
         currentHighScoreTextField.setText("0");
         isHighScoreBeaten();
         winnerTextField.setText("You Lose!");
     }
 
+    /**
+     * Draw win.
+     * Sets winner text to indicate a draw.
+     */
     public void drawWin() {
         winnerTextField.setText("Draw!");
     }
 
 
+    /**
+     * Progress bar animation.
+     * Animates the bot's progress bar over the specified (random) duration.
+     *
+     * @param animationDuration the animation duration
+     */
     public void progressBarAnimation(int animationDuration) {
         botProgressBar.setVisible(true);
         botProgressBar.setProgress(0);
@@ -210,6 +288,11 @@ public class GameController {
     }
 
 
+    /**
+     * Gesture selected.
+     * Handles the event when a player selects a gesture.
+     * Hides buttons, shows player's gesture, sets bot's random gesture, and reveals the winner.
+     */
     public void gestureSelected() {
         hideButtons();
         showGesture(player.getSelectedGesture(), playerShowGesture);
@@ -218,6 +301,11 @@ public class GameController {
     }
 
 
+    /**
+     * Reveal winner.
+     * Animates the bot's progress bar, then reveals the bot's gesture and determines the winner.
+     * Updates the UI accordingly.
+     */
     public void revealWinner() {
         Random random = new Random();
         final int animationDuration = 1000 + random.nextInt(3000);
@@ -242,6 +330,12 @@ public class GameController {
     }
 
 
+    /**
+     * Gets winner.
+     * Determines the winner based on the selected gestures of the player and bot.
+     *
+     * @return the winner
+     */
     public Player getWinner() {
         int playerGestureID = player.getSelectedGesture().getID();
         int botGestureID = bot.getSelectedGesture().getID();

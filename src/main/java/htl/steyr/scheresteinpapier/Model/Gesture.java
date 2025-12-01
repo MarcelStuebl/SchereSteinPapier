@@ -2,7 +2,6 @@ package htl.steyr.scheresteinpapier.Model;
 
 public class Gesture {
 
-    private int gesture;
     /**
      * 0 = Schere
      * 1 = Stein
@@ -10,6 +9,8 @@ public class Gesture {
      * 3 = Brunnen
      * 4 = unset
      */
+    private int gesture;
+
 
     public Gesture() {
         setGesture(4);

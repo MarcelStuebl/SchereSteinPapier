@@ -13,6 +13,7 @@ target/
 .idea/copilot.data.migration.ask.xml
 .idea/copilot.data.migration.edit.xml
 .idea/copilot.data.migration.ask2agent.xml
+.idea/intellij-javadocs-4.0.1.xml
 *.iws
 *.iml
 *.ipr
