@@ -27,7 +27,7 @@
       </Button>
    
       <Text layoutX="269.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="Schere, Stein, Papier" AnchorPane.leftAnchor="269.0" AnchorPane.rightAnchor="270.59375" AnchorPane.topAnchor="37.203125" />
-      <Text layoutX="34.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highscore" wrappingWidth="132.1999877929686" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="32.0">
+      <Text layoutX="34.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highscore" wrappingWidth="132.1999877929686" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="32.0" styleClass="currentHighScore">
          <font>
             <Font size="28.0" />
          </font>
@@ -49,7 +49,7 @@
             <Font size="28.0" />
          </font>
       </Text>
-      <Text layoutX="24.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current run" wrappingWidth="150.0">
+      <Text layoutX="24.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current run" wrappingWidth="150.0" styleClass="currentRunScore">
          <font>
             <Font size="28.0" />
          </font>

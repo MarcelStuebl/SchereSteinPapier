@@ -122,9 +122,20 @@
 .globalHigh, .currentHigh {
     -fx-fill: chocolate;
     -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-font-family: Georgia;
+}
+
+.currentHighScore, .currentRunScore {
+    -fx-fill: olive;
+    -fx-font-size: 23px;
+    -fx-font-weight: bold;
+    -fx-font-family: Georgia;
 }
 
 .winText {
     -fx-fill: olivedrab;
     -fx-font-weight: bold;
 }
+
+
