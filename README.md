@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎮 Rock Paper Scissors Well
+# 🎮 Rock Paper Scissors
 
 ### A Modern JavaFX Desktop Game
 
@@ -21,7 +21,7 @@
 
 ## 📖 About
 
-**Rock Paper Scissors Well** (*Schere Stein Papier Brunnen*) is a desktop application that brings the classic hand game to your screen with a modern JavaFX interface. This project extends the traditional game with the **Well** (*Brunnen*) option, adding an extra layer of strategy! 
+**Rock Paper Scissors** (*Schere Stein Papier*) is a desktop application that brings the classic hand game to your screen with a modern JavaFX interface. This project extends the traditional game with the **Well** (*Brunnen*) option, adding an extra layer of strategy! 
 
 This game was developed as part of the **ITP (Informationstechnische Projekte)** course at **[HTBLA Steyr](https://www.htl-steyr.ac.at/)**, Austria.
 
