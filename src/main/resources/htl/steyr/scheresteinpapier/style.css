@@ -107,6 +107,15 @@
     -fx-border-radius: 50%;
 }
 
+.VolumeIcon {
+    -fx-background-image: url('img/Volume.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: transparent;
+
+}
+
 .progressBar > .track {
     -fx-background-color: wheat;
     -fx-background-radius: 8px;
