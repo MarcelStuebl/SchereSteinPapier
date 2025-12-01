@@ -17,6 +17,10 @@ public class Player {
 
     /**
      * Sets random gesture.
+     * 0 = Schere
+     * 1 = Stein
+     * 2 = Papier
+     * 3 = Brunnen
      */
     public void setRandomGesture() {
         Random rand = new Random();
