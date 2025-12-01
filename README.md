@@ -165,20 +165,20 @@ SchereSteinPapier/
 ├── 📁 src/
 │   ├── 📁 main/
 │   │   ├── 📁 java/htl/steyr/scheresteinpapier/
-│   │   │   ├── 📄 Launcher.java          # Application entry point
-│   │   │   ├── 📄 GameApplication.java   # JavaFX Application class
-│   │   │   ├── 📄 GameController.java    # Main game logic & UI control
-│   │   │   ├── 📄 Player.java            # Player model with gesture
+│   │   │   ├── 📄 Launcher.java                         # Application entry point
+│   │   │   ├── 📄 GameApplication.java                  # JavaFX Application class
+│   │   │   ├── 📄 GameController.java                   # Main game logic & UI control
+│   │   │   ├── 📄 Player.java                           # Player model with gesture
 │   │   │   └── 📁 Model/
-│   │   │       └── 📄 Gesture.java       # Gesture data class
+│   │   │       └── 📄 Gesture.java                      # Gesture data class
 │   │   └── 📁 resources/htl/steyr/scheresteinpapier/
-│   │       ├── 📄 game-view.fxml         # UI layout definition
-│   │       ├── 📄 style.css              # Custom styling
-│   │       └── 📁 img/                   # Gesture icons & assets
-├── 📄 pom.xml                            # Maven configuration
-├── 📄 mvnw / mvnw.cmd                    # Maven Wrapper scripts
-├── 📄 Spielbeschreibung Schere Stein Papier.pdf  # Game documentation (German)
-└── 📄 README.md                          # You are here! 
+│   │       ├── 📄 game-view.fxml                        # UI layout definition
+│   │       ├── 📄 style.css                             # Custom styling
+│   │       └── 📁 img/                                  # Gesture icons & assets
+├── 📄 pom.xml                                           # Maven configuration
+├── 📄 mvnw / mvnw.cmd                                   # Maven Wrapper scripts
+├── 📄 Spielbeschreibung Schere Stein Papier.pdf         # Game documentation (German)
+└── 📄 README.md                                         # You are here! 
 ```
 
 ### Component Overview
@@ -248,16 +248,6 @@ SchereSteinPapier/
 | Styling | `src/main/resources/htl/steyr/scheresteinpapier/style.css` |
 | Game Logic | `src/main/java/htl/steyr/scheresteinpapier/GameController.java` |
 | Assets | `src/main/resources/htl/steyr/scheresteinpapier/img/` |
-
-### 🤝 Contributing
-
-Contributions are welcome! Here's how you can help:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/AmazingFeature`)
-3. **Commit** your changes (`git commit -m 'Add some AmazingFeature'`)
-4. **Push** to the branch (`git push origin feature/AmazingFeature`)
-5. **Open** a Pull Request
 
 ---
 
