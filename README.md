@@ -261,10 +261,9 @@ SchereSteinPapier/
       </a>
       <br />
       <h3>Marcel STÜBL</h3>
+      <img src="https://img.shields.io/badge/Backend-007396?style=for-the-badge&logo=java&logoColor=white" alt="Backend"/>
+      <br /><br />
       <a href="mailto:mstuebl@htl-steyr.ac.at">📧 mstuebl@htl-steyr.ac.at</a>
-      <br />
-      <a href="https://github.com/MarcelStuebl">
-      </a>
     </td>
     <td align="center">
       <a href="https://github.com/1Mauritz2">
@@ -272,10 +271,9 @@ SchereSteinPapier/
       </a>
       <br />
       <h3>Moritz RASCHKO</h3>
+      <img src="https://img.shields.io/badge/Frontend-FF6B6B?style=for-the-badge&logo=css3&logoColor=white" alt="Frontend"/>
+      <br /><br />
       <a href="mailto:mraschk1@htl-steyr.ac.at">📧 mraschk1@htl-steyr.ac.at</a>
-      <br />
-      <a href="https://github.com/1Mauritz2">
-      </a>
     </td>
   </tr>
 </table>
