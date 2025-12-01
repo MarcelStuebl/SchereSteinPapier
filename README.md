@@ -261,7 +261,7 @@ SchereSteinPapier/
       </a>
       <br />
       <h3>Marcel STÜBL</h3>
-      <a href="mailto:mstuebl@htl-steyr.ac.at">📧 mstuebl@htl-steyr. ac.at</a>
+      <a href="mailto:mstuebl@htl-steyr.ac.at">📧 mstuebl@htl-steyr.ac.at</a>
       <br />
       <a href="https://github.com/MarcelStuebl">
       </a>
