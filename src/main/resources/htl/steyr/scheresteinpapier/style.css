@@ -69,6 +69,19 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.2, 0, 2);
 }
 
+.Volume-Bar {
+    -fx-background-color: transparent;
+}
 
+.Volume-Bar .track {
+    -fx-background-color: #e0e0e0;
+    -fx-background-radius: 5px;
+    -fx-background-insets: 0 12 0 12;
+}
 
-
+.Volume-Bar .thumb {
+    -fx-background-color: #3b82f6;
+    -fx-background-radius: 10px;
+    -fx-background-insets: 0 6 0 6;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);
+}
