@@ -10,11 +10,14 @@ public class Player {
     public Gesture getSelectedGesture() {
         return this.gesture;
     }
-
     public void setSelectedGesture(int gesture) {
         this.gesture.setGesture(gesture);
     }
 
+
+    /**
+     * Sets random gesture.
+     */
     public void setRandomGesture() {
         Random rand = new Random();
         int randomGesture = rand.nextInt(4);
