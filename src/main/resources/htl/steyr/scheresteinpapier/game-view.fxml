@@ -37,7 +37,7 @@
             <Font size="28.0" />
          </font>
       </Text>
-      <Text fx:id="winnerTextField" layoutX="60.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="879.2574402093887" AnchorPane.bottomAnchor="368.455078125" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.74255979061127" AnchorPane.topAnchor="349.361328125" styleClass="WinText">
+      <Text fx:id="winnerTextField" layoutX="60.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="879.2574402093887" AnchorPane.bottomAnchor="368.455078125" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.74255979061127" AnchorPane.topAnchor="349.361328125" styleClass="winText">
          <font>
             <Font size="46.0" />
          </font>

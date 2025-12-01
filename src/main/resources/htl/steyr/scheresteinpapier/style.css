@@ -39,7 +39,7 @@
 }
 
 .AnchorPane {
-    -fx-background-color: white;
+    -fx-background-color: beige;
 }
 
 .reset-button {
@@ -50,10 +50,10 @@
 }
 
 .title-text {
-    -fx-font-size: 48px;
+    -fx-fill: saddlebrown;
+    -fx-font-size: 46px;
     -fx-font-weight: bold;
-    -fx-text-fill: black;
-    -fx-font-family: Lucida Console;
+    -fx-font-family: Georgia;
 }
 
 .gesture-Text {
