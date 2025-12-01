@@ -1,3 +1,19 @@
+/* ============================================================
+   Allgemeines Layout & Hintergrund
+   ============================================================ */
+
+.AnchorPane {
+    -fx-background-color: beige;
+}
+
+
+
+
+
+/* ============================================================
+   Spiel-Buttons (Schere, Stein, Papier, Brunnen)
+   ============================================================ */
+
 .schere-button, .stein-button, .papier-button, .brunnen-button {
     -fx-background-color: floralwhite;
     -fx-background-radius: 12px;
@@ -20,7 +36,6 @@
     -fx-cursor: hand;
 }
 
-
 .schere-button {
     -fx-background-image: url('img/Schere.png');
 }
@@ -35,12 +50,15 @@
 
 .brunnen-button {
     -fx-background-image: url('img/Brunnen.png');
-
 }
 
-.AnchorPane {
-    -fx-background-color: beige;
-}
+
+
+
+
+/* ============================================================
+   UI-Steuerelemente (Reset, Volume, Progress)
+   ============================================================ */
 
 .reset-button {
     -fx-background-color: yellowgreen;
@@ -66,19 +84,27 @@
     -fx-effect: dropshadow(three-pass-box, darkolivegreen, 0, 0, 1, 1);
 }
 
-.title-text {
-    -fx-fill: saddlebrown;
-    -fx-font-size: 46px;
-    -fx-font-weight: bold;
-    -fx-font-family: Georgia;
+.Volume-Bar {
+    -fx-background-color: linen;
+    -fx-background-radius: 15px;
+    -fx-border-color: tan;
+    -fx-border-radius: 15px;
+    -fx-border-width: 2px;
 }
 
-.gesture-Text {
-    -fx-font-size: 18px;
+.Volume-Bar .track {
+    -fx-background-color: wheat;
+    -fx-background-radius: 8px;
+    -fx-background-insets: 0 10 0 10;
 }
 
-.gesture-Icons {
-    -fx-background-color-alignment: center;
+.Volume-Bar .thumb {
+    -fx-background-color: chocolate;
+    -fx-background-radius: 50%;
+    -fx-background-insets: 0 5 0 5;
+    -fx-border-color: linen;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50%;
 }
 
 .progressBar > .track {
@@ -94,29 +120,19 @@
     -fx-background-radius: 6px;
 }
 
-.Volume-Bar {
-    -fx-background-color: linen;
-    -fx-background-radius: 15px;
-    -fx-border-color: tan;
-    -fx-border-radius: 15px;
-    -fx-border-width: 2px;
-}
 
 
 
-.Volume-Bar .track {
-    -fx-background-color: wheat;
-    -fx-background-radius: 8px;
-    -fx-background-insets: 0 10 0 10;
-}
 
-.Volume-Bar .thumb {
-    -fx-background-color: chocolate;
-    -fx-background-radius: 50%;
-    -fx-background-insets: 0 5 0 5;
-    -fx-border-color: linen;
-    -fx-border-width: 2px;
-    -fx-border-radius: 50%;
+/* ============================================================
+   Texte
+   ============================================================ */
+
+.title-text {
+    -fx-fill: saddlebrown;
+    -fx-font-size: 46px;
+    -fx-font-weight: bold;
+    -fx-font-family: Georgia;
 }
 
 .globalHigh, .currentHigh {
@@ -138,4 +154,10 @@
     -fx-font-weight: bold;
 }
 
+.gesture-Text {
+    -fx-font-size: 18px;
+}
 
+.gesture-Icons {
+    -fx-background-color-alignment: center;
+}
