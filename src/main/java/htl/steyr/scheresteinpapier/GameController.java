@@ -49,7 +49,7 @@ public class GameController {
      */
     public void initialize() {
         globalHighScoreTextField.setText("" + loadHighscore());
-        songChoiceComboBox.getItems().addAll("Lobby Classic", "Song 2", "Song 3");
+        songChoiceComboBox.getItems().addAll("Lobby Classic", "Der Mann mit dem Koks", "Epic Boss Fight", "Minecraft Theme", "Deine Augen");
         songChoiceComboBox.setValue("Lobby Classic");
         playBackgroundMusic(songChoiceComboBox.getValue().toString());
 
@@ -66,10 +66,14 @@ public class GameController {
         String path = "";
         if (Objects.equals(song, "Lobby Classic")) {
             path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/lobby-classic-game.mp3")).toExternalForm();
-        } else  if (Objects.equals(song, "Song 2")) {
-            path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/song2.mp3")).toExternalForm();
-        } else  if (Objects.equals(song, "Song 3")) {
-            path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/song3.mp3")).toExternalForm();
+        } else  if (Objects.equals(song, "Der Mann mit dem Koks")) {
+            path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/der-mann-mit-dem-koks.mp3")).toExternalForm();
+        } else  if (Objects.equals(song, "Epic Boss Fight")) {
+            path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/epic-boss-fight.mp3")).toExternalForm();
+        } else  if (Objects.equals(song, "Minecraft Theme")) {
+            path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/minecraft-c418-aria-math.mp3")).toExternalForm();
+        } else  if (Objects.equals(song, "Deine Augen")) {
+            path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/tream-deine-augen.mp3")).toExternalForm();
         }
 
         Media media = new Media(path);
