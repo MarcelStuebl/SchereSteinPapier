@@ -43,10 +43,27 @@
 }
 
 .reset-button {
+    -fx-background-color: yellowgreen;
     -fx-text-fill: white;
-    -fx-background-color: DodgerBlue;
+    -fx-background-radius: 10px;
+    -fx-font-size: 22px;
     -fx-font-weight: bold;
-    -fx-font-size: 26px;
+    -fx-padding: 10px 30px;
+    -fx-effect: dropshadow(three-pass-box, darkolivegreen, 0, 0, 3, 3);
+}
+
+.reset-button:hover {
+    -fx-background-color: yellowgreen;
+    -fx-background-x: -1;
+    -fx-background-y: -1;
+    -fx-effect: dropshadow(three-pass-box, darkolivegreen, 0, 0, 5, 5);
+    -fx-cursor: hand;
+}
+
+.reset-button:pressed {
+    -fx-translate-x: 2;
+    -fx-translate-y: 2;
+    -fx-effect: dropshadow(three-pass-box, darkolivegreen, 0, 0, 1, 1);
 }
 
 .title-text {
