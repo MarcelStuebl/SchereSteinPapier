@@ -95,20 +95,28 @@
 }
 
 .Volume-Bar {
-    -fx-background-color: transparent;
+    -fx-background-color: linen;
+    -fx-background-radius: 15px;
+    -fx-border-color: tan;
+    -fx-border-radius: 15px;
+    -fx-border-width: 2px;
 }
 
+
+
 .Volume-Bar .track {
-    -fx-background-color: #e0e0e0;
-    -fx-background-radius: 5px;
-    -fx-background-insets: 0 12 0 12;
+    -fx-background-color: wheat;
+    -fx-background-radius: 8px;
+    -fx-background-insets: 0 10 0 10;
 }
 
 .Volume-Bar .thumb {
-    -fx-background-color: #3b82f6;
-    -fx-background-radius: 10px;
-    -fx-background-insets: 0 6 0 6;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);
+    -fx-background-color: chocolate;
+    -fx-background-radius: 50%;
+    -fx-background-insets: 0 5 0 5;
+    -fx-border-color: linen;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50%;
 }
 
 .globalHigh, .currentHigh {
