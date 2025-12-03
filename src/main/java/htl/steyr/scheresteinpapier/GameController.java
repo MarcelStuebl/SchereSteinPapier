@@ -77,7 +77,7 @@ public class GameController {
         } else if (Objects.equals(song, "Deine Augen")) {
             path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/tream-deine-augen.mp3")).toExternalForm();
         } else if (Objects.equals(song, "Intastellar")) {
-            path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/Intastellar.mp3")).toExternalForm();
+            path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/intastellar.mp3")).toExternalForm();
         }
 
         Media media = new Media(path);
@@ -96,7 +96,7 @@ public class GameController {
      */
     public void songChosenComboBox() {
         mediaPlayer.stop();
-        playBackgroundMusic(songChoiceComboBox.getValue().toString());
+        playBackgroundMusic(songChoiceComboBox.getValue());
     }
 
     /**
@@ -217,7 +217,7 @@ public class GameController {
 
     /**
      * Load image from resources.
-     * Loads an image given its filename from the resources folder.
+     * Loads an image given its filename from the "resources" folder.
      *
      * @param filename the filename
      * @return the image
