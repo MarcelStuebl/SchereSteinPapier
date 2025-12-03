@@ -52,12 +52,32 @@
             <Font size="28.0" />
          </font>
       </Text>
-      <Text layoutX="24.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="currentRunScore" text="Current run" wrappingWidth="150.0">
+      <Text layoutX="24.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="currentRunScore" text="Current run" wrappingWidth="150.0" AnchorPane.leftAnchor="24.0">
          <font>
             <Font size="28.0" />
          </font>
       </Text>
       <Button disable="true" layoutX="10.0" layoutY="530.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" styleClass="VolumeIcon" AnchorPane.bottomAnchor="222.6" AnchorPane.leftAnchor="10.0" />
       <ComboBox fx:id="songChoiceComboBox" layoutX="2.0" layoutY="487.0" onAction="#songChosenComboBox" prefHeight="5.0" prefWidth="34.0" style="-fx-max-width: 10px;" styleClass="songChoice" AnchorPane.leftAnchor="2.0" />
+      <Text layoutX="816.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="currentHighScore" text="Highscore Bot" wrappingWidth="177.7999633789061" AnchorPane.rightAnchor="6.200036621093886">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <Text layoutX="830.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="currentRunScore" text="Current Bot" wrappingWidth="150.0" AnchorPane.rightAnchor="20.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <Text fx:id="currentHighScoreTextFieldBot" layoutX="888.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="currentHigh" text="0" AnchorPane.rightAnchor="84.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <Text fx:id="globalHighScoreTextFieldBot" layoutX="889.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="globalHigh" text="0" AnchorPane.rightAnchor="84.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
