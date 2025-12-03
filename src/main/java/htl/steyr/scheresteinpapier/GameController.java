@@ -104,10 +104,10 @@ public class GameController {
 
 
     /**
-     * Load highscore int from .stats file.
+     * Load player highscore int from .stats file.
      * If no file exists, returns 0.
      *
-     * @return the highscore as int
+     * @return the player highscore as int
      */
     public int loadPlayerHighscore() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
@@ -123,6 +123,13 @@ public class GameController {
         return 0;
     }
 
+
+    /**
+     * Load bot highscore int from .stats file.
+     * If no file exists, returns 0.
+     *
+     * @return the bot highscore as int
+     */
     public int loadBotHighscore() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
             String line;
@@ -295,6 +302,7 @@ public class GameController {
      * Increases current high score by 1, checks for global high score update, and sets winner text.
      */
     public void playerWin() {
+        currentHighScoreTextFieldBot.setText("0");
         currentHighScoreTextFieldPlayer.setText(String.valueOf(Integer.parseInt(currentHighScoreTextFieldPlayer.getText()) + 1));
         isHighScoreBeaten();
         winnerTextField.setText("You Win!");
@@ -306,6 +314,7 @@ public class GameController {
      */
     public void botWin() {
         currentHighScoreTextFieldPlayer.setText("0");
+        currentHighScoreTextFieldBot.setText(String.valueOf(Integer.parseInt(currentHighScoreTextFieldBot.getText()) + 1));
         isHighScoreBeaten();
         winnerTextField.setText("You Lose!");
     }
