@@ -2,7 +2,6 @@ package htl.steyr.scheresteinpapier;
 
 import htl.steyr.scheresteinpapier.Model.Gesture;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
@@ -34,7 +33,7 @@ public class GameController {
     public Text winnerTextField;
 
     public ScrollBar volumeScrollBar;
-    public ComboBox songChoiceComboBox;
+    public ComboBox<String> songChoiceComboBox;
     private MediaPlayer mediaPlayer;
 
     private static final String FILE_NAME = ".stats";
@@ -46,21 +45,24 @@ public class GameController {
     /**
      * Initialize.
      * Loads highscore and starts background music.
+     * Also sets up volume control for the music.
      */
     public void initialize() {
         globalHighScoreTextField.setText("" + loadHighscore());
         songChoiceComboBox.getItems().addAll("Lobby Classic", "Der Mann mit dem Koks", "Epic Boss Fight", "Minecraft Theme", "Deine Augen", "Intastellar");
         songChoiceComboBox.setValue("Lobby Classic");
-        playBackgroundMusic(songChoiceComboBox.getValue().toString());
+        playBackgroundMusic(songChoiceComboBox.getValue());
 
-        // Event listener auf Value für die ScrollBar hinzufügen um Volumen zu ändern
+        // Event listener auf Value für die ScrollBar hinzufügen, um Volumen zu ändern
         volumeScrollBar.valueProperty().addListener((observable, oldValue, newValue)
                 -> mediaPlayer.setVolume(newValue.doubleValue()));
     }
 
     /**
      * Play background music.
-     * Loads and plays the background music in a loop.
+     * Plays the selected background music track in a loop.
+     *
+     * @param song the song
      */
     private void playBackgroundMusic(String song) {
         String path = "";
@@ -87,7 +89,12 @@ public class GameController {
     }
 
 
-    public void songChosenComboBox(ActionEvent actionEvent) {
+    /**
+     * Song chosen combo box.
+     * Event handler for song selection from the combo box.
+     * Stops current music and plays the selected song.
+     */
+    public void songChosenComboBox() {
         mediaPlayer.stop();
         playBackgroundMusic(songChoiceComboBox.getValue().toString());
     }
