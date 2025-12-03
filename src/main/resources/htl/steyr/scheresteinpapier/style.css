@@ -1,5 +1,5 @@
 /* ============================================================
-   Allgemeines Layout & Hintergrund
+   Allgemeines Layout
    ============================================================ */
 
 .AnchorPane {
@@ -7,11 +7,8 @@
 }
 
 
-
-
-
 /* ============================================================
-   Spiel-Buttons (Schere, Stein, Papier, Brunnen)
+   Spiel-Buttons
    ============================================================ */
 
 .schere-button, .stein-button, .papier-button, .brunnen-button {
@@ -53,11 +50,8 @@
 }
 
 
-
-
-
 /* ============================================================
-   UI-Steuerelemente (Reset, Volume, Progress)
+   UI-Steuerelemente
    ============================================================ */
 
 .reset-button {
@@ -129,11 +123,79 @@
 }
 
 
+/* ============================================================
+   ComboBox (Song Auswahl)
+   ============================================================ */
 
+.songChoice {
+    -fx-background-color: floralwhite;
+    -fx-background-radius: 10px;
+    -fx-border-color: burlywood;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-pref-height: 35px;
+    -fx-padding: 2px 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.songChoice:hover {
+    -fx-background-color: white;
+    -fx-border-color: chocolate;
+    -fx-cursor: hand;
+}
+
+.songChoice .list-cell {
+    -fx-text-fill: saddlebrown;
+    -fx-font-family: "Georgia";
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-color: transparent;
+    -fx-padding: 3px 5px;
+}
+
+.songChoice .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.songChoice .arrow {
+    -fx-background-color: burlywood;
+    -fx-padding: 0.4em;
+}
+
+.songChoice:hover .arrow {
+    -fx-background-color: chocolate;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: floralwhite;
+    -fx-background-radius: 5px;
+    -fx-border-color: burlywood;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 8, 0, 0, 4);
+}
+
+.combo-box-popup .list-cell {
+    -fx-text-fill: saddlebrown;
+    -fx-font-family: "Georgia";
+    -fx-font-size: 14px;
+    -fx-padding: 8px;
+    -fx-background-color: floralwhite;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: wheat;
+    -fx-text-fill: chocolate;
+}
+
+.combo-box-popup .list-cell:filled:selected,
+.combo-box-popup .list-cell:filled:selected:hover {
+    -fx-background-color: burlywood;
+    -fx-text-fill: white;
+}
 
 
 /* ============================================================
-   Texte
+   Texte & Typografie
    ============================================================ */
 
 .title-text {
@@ -168,13 +230,4 @@
 
 .gesture-Icons {
     -fx-background-color-alignment: center;
-}
-
-
-
-
-.songChoice {
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
-    -fx-text-fill: olive;
 }
