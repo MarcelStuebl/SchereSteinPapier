@@ -365,7 +365,6 @@ public class GameController {
      */
     public void gestureSelected() {
         hideButtons();
-        showGesture(player.getSelectedGesture(), playerShowGesture);
         bot.setRandomGesture();
         revealWinner();
     }
@@ -388,6 +387,7 @@ public class GameController {
                 throw new RuntimeException(e);
             }
             showGesture(bot.getSelectedGesture(), botShowGesture);
+            showGesture(player.getSelectedGesture(), playerShowGesture);
             if (getWinner() == player) {
                 playerWin();
             } else if (getWinner() == bot) {
@@ -425,3 +425,7 @@ public class GameController {
     }
 
 }
+
+
+
+
