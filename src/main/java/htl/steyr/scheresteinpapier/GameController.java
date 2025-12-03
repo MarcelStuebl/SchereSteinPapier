@@ -36,8 +36,6 @@ public class GameController {
 
     public ScrollBar volumeScrollBar;
     public ComboBox<String> songChoiceComboBox;
-    public Text currentHighScoreTextFieldBot;
-    public Text globalHighScoreTextFieldBot;
     private MediaPlayer mediaPlayer;
 
     private static final String FILE_NAME = ".stats";
@@ -297,6 +295,7 @@ public class GameController {
      * Increases current high score by 1, checks for global high score update, and sets winner text.
      */
     public void playerWin() {
+        currentHighScoreTextFieldBot.setText("0");
         currentHighScoreTextFieldPlayer.setText(String.valueOf(Integer.parseInt(currentHighScoreTextFieldPlayer.getText()) + 1));
         isHighScoreBeaten();
         winnerTextField.setText("You Win!");
@@ -308,6 +307,7 @@ public class GameController {
      */
     public void botWin() {
         currentHighScoreTextFieldPlayer.setText("0");
+        currentHighScoreTextFieldBot.setText(String.valueOf(Integer.parseInt(currentHighScoreTextFieldBot.getText()) + 1));
         isHighScoreBeaten();
         winnerTextField.setText("You Lose!");
     }
