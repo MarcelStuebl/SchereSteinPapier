@@ -104,10 +104,10 @@ public class GameController {
 
 
     /**
-     * Load highscore int from .stats file.
+     * Load player highscore int from .stats file.
      * If no file exists, returns 0.
      *
-     * @return the highscore as int
+     * @return the player highscore as int
      */
     public int loadPlayerHighscore() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
@@ -123,6 +123,13 @@ public class GameController {
         return 0;
     }
 
+
+    /**
+     * Load bot highscore int from .stats file.
+     * If no file exists, returns 0.
+     *
+     * @return the bot highscore as int
+     */
     public int loadBotHighscore() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
             String line;
