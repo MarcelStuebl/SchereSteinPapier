@@ -58,6 +58,6 @@
          </font>
       </Text>
       <Button disable="true" layoutX="10.0" layoutY="530.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" styleClass="VolumeIcon" AnchorPane.bottomAnchor="222.6" AnchorPane.leftAnchor="10.0" />
-      <ComboBox fx:id="songChoiceComboBox" layoutX="10.0" layoutY="485.0" onAction="#songChosenComboBox" prefHeight="26.0" prefWidth="209.0" AnchorPane.leftAnchor="10.0" />
+      <ComboBox fx:id="songChoiceComboBox" layoutX="10.0" layoutY="485.0" onAction="#songChosenComboBox" prefHeight="26.0" prefWidth="209.0" AnchorPane.leftAnchor="10.0" styleClass="songChoice"/>
    </children>
 </AnchorPane>

@@ -169,3 +169,12 @@
 .gesture-Icons {
     -fx-background-color-alignment: center;
 }
+
+
+
+
+.songChoice {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: olive;
+}

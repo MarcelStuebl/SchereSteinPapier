@@ -49,7 +49,7 @@ public class GameController {
      */
     public void initialize() {
         globalHighScoreTextField.setText("" + loadHighscore());
-        songChoiceComboBox.getItems().addAll("Lobby Classic", "Der Mann mit dem Koks", "Epic Boss Fight", "Minecraft Theme", "Deine Augen");
+        songChoiceComboBox.getItems().addAll("Lobby Classic", "Der Mann mit dem Koks", "Epic Boss Fight", "Minecraft Theme", "Deine Augen", "Intastellar");
         songChoiceComboBox.setValue("Lobby Classic");
         playBackgroundMusic(songChoiceComboBox.getValue().toString());
 
@@ -66,14 +66,16 @@ public class GameController {
         String path = "";
         if (Objects.equals(song, "Lobby Classic")) {
             path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/lobby-classic-game.mp3")).toExternalForm();
-        } else  if (Objects.equals(song, "Der Mann mit dem Koks")) {
+        } else if (Objects.equals(song, "Der Mann mit dem Koks")) {
             path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/der-mann-mit-dem-koks.mp3")).toExternalForm();
-        } else  if (Objects.equals(song, "Epic Boss Fight")) {
+        } else if (Objects.equals(song, "Epic Boss Fight")) {
             path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/epic-boss-fight.mp3")).toExternalForm();
-        } else  if (Objects.equals(song, "Minecraft Theme")) {
+        } else if (Objects.equals(song, "Minecraft Theme")) {
             path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/minecraft-c418-aria-math.mp3")).toExternalForm();
-        } else  if (Objects.equals(song, "Deine Augen")) {
+        } else if (Objects.equals(song, "Deine Augen")) {
             path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/tream-deine-augen.mp3")).toExternalForm();
+        } else if (Objects.equals(song, "Intastellar")) {
+            path = Objects.requireNonNull(getClass().getResource("/htl/steyr/scheresteinpapier/sound/Intastellar.mp3")).toExternalForm();
         }
 
         Media media = new Media(path);
@@ -364,8 +366,10 @@ public class GameController {
         int botGestureID = bot.getSelectedGesture().getID();
         // Schere = 0, Stein = 1, Papier = 2, Brunnen = 3
 
-        if (playerGestureID == 3 && (botGestureID == 0 || botGestureID == 1)) return player;    // Brunnen schlägt Schere und Stein
-        if (botGestureID == 3 && (playerGestureID == 0 || playerGestureID == 1)) return bot;    // Brunnen schlägt Schere und Stein
+        if (playerGestureID == 3 && (botGestureID == 0 || botGestureID == 1))
+            return player;    // Brunnen schlägt Schere und Stein
+        if (botGestureID == 3 && (playerGestureID == 0 || playerGestureID == 1))
+            return bot;    // Brunnen schlägt Schere und Stein
         if (playerGestureID == 2 && botGestureID == 3) return player;   // Papier vs Brunnen
         if (botGestureID == 2 && playerGestureID == 3) return bot;      // Papier vs Brunnen
         if (playerGestureID == 0 && botGestureID == 1) return bot;      // Schere vs Stein
@@ -377,9 +381,4 @@ public class GameController {
         return null;    // Unentschieden
     }
 
-
 }
-
-
-
-
