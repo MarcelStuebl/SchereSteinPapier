@@ -144,39 +144,55 @@ public class GameController {
         return 0;
     }
 
+
     /**
      * Is high score beaten.
-     * Checks if the current high score is greater than the global high score.
-     * If so, updates the global high score and saves it to the .stats file.
-     * Also checks for bot high score.
+     * Checks if the current high score exceeds the global high score for player or bot.
+     * If so, updates the global high score.
      */
     public void isHighScoreBeaten() {
-        int currentScore = Integer.parseInt(currentHighScoreTextFieldPlayer.getText());
-        int globalHighScore = Integer.parseInt(globalHighScoreTextFieldPlayer.getText());
+        int currentPlayerScore = Integer.parseInt(currentHighScoreTextFieldPlayer.getText());
+        int globalPlayerScore = Integer.parseInt(globalHighScoreTextFieldPlayer.getText());
 
         int currentBotScore = Integer.parseInt(currentHighScoreTextFieldBot.getText());
         int globalBotScore = Integer.parseInt(globalHighScoreTextFieldBot.getText());
 
-        if (currentScore > globalHighScore) {
-            globalHighScoreTextFieldPlayer.setText(String.valueOf(currentScore));
+        if (currentPlayerScore > globalPlayerScore) {
+            updateHighScore(currentPlayerScore, true);
+        } else if (currentBotScore > globalBotScore) {
+            updateHighScore(currentBotScore, false);
+        }
+    }
+
+    /**
+     * Update high score.
+     * Updates the global high score text field and saves it to the .stats file.
+     *
+     * @param newScore the new score
+     * @param isPlayer true if player score, false if bot score
+     */
+    public void updateHighScore(int newScore, boolean isPlayer) {
+        if (isPlayer) {
+            globalHighScoreTextFieldPlayer.setText(String.valueOf(newScore));
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
-                writer.write("player: " + currentHighScoreTextFieldPlayer.getText());
+                writer.write("player: " + newScore);
                 writer.newLine();
                 writer.write("bot: " + globalHighScoreTextFieldBot.getText());
             } catch (IOException e) {
                 System.err.println("Fehler beim Speichern: " + e.getMessage());
             }
-        } else if (currentBotScore > globalBotScore) {
-            globalHighScoreTextFieldBot.setText(String.valueOf(currentBotScore));
+        } else {
+            globalHighScoreTextFieldBot.setText(String.valueOf(newScore));
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
                 writer.write("player: " + globalHighScoreTextFieldPlayer.getText());
                 writer.newLine();
-                writer.write("bot: " + currentHighScoreTextFieldBot.getText());
+                writer.write("bot: " + newScore);
 
             } catch (IOException e) {
                 System.err.println("Fehler beim Speichern: " + e.getMessage());
             }
         }
+
     }
 
     /**
