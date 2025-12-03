@@ -36,8 +36,6 @@ public class GameController {
 
     public ScrollBar volumeScrollBar;
     public ComboBox<String> songChoiceComboBox;
-    public Text currentHighScoreTextFieldBot;
-    public Text globalHighScoreTextFieldBot;
     private MediaPlayer mediaPlayer;
 
     private static final String FILE_NAME = ".stats";
