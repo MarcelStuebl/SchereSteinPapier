@@ -101,6 +101,10 @@
     -fx-border-radius: 50%;
 }
 
+.Volume-Bar .thumb:hover {
+    -fx-background-color: tan;
+}
+
 .VolumeIcon {
     -fx-background-image: url('img/Volume.png');
     -fx-background-position: center;
@@ -121,6 +125,8 @@
     -fx-background-color: chocolate;
     -fx-background-radius: 6px;
 }
+
+
 
 
 /* ============================================================
