@@ -28,8 +28,10 @@ public class GameController {
     public Button resetButton;
     public ProgressBar botProgressBar;
 
-    public Text globalHighScoreTextField;
-    public Text currentHighScoreTextField;
+    public Text globalHighScoreTextFieldPlayer;
+    public Text currentHighScoreTextFieldPlayer;
+    public Text globalHighScoreTextFieldBot;
+    public Text currentHighScoreTextFieldBot;
     public Text winnerTextField;
 
     public ScrollBar volumeScrollBar;
@@ -48,7 +50,8 @@ public class GameController {
      * Also sets up volume control for the music.
      */
     public void initialize() {
-        globalHighScoreTextField.setText("" + loadHighscore());
+        globalHighScoreTextFieldPlayer.setText("" + loadPlayerHighscore());
+        globalHighScoreTextFieldBot.setText("" + loadBotHighscore());
         songChoiceComboBox.getItems().addAll("Lobby Classic", "Der Mann mit dem Koks", "Epic Boss Fight", "Minecraft Theme", "Deine Augen", "Intastellar");
         songChoiceComboBox.setValue("Lobby Classic");
         playBackgroundMusic(songChoiceComboBox.getValue());
@@ -99,17 +102,6 @@ public class GameController {
         playBackgroundMusic(songChoiceComboBox.getValue());
     }
 
-    /**
-     * Save high score.
-     * Saves the current global high score to a .stats file.
-     */
-    public void saveHighScore() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
-            writer.write(String.valueOf(globalHighScoreTextField.getText()));
-        } catch (IOException e) {
-            System.err.println("Fehler beim Speichern: " + e.getMessage());
-        }
-    }
 
     /**
      * Load highscore int from .stats file.
@@ -117,29 +109,66 @@ public class GameController {
      *
      * @return the highscore as int
      */
-    public int loadHighscore() {
+    public int loadPlayerHighscore() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
-            String line = reader.readLine();
-            if (line != null && !line.isEmpty()) {
-                return Integer.parseInt(line);
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("player: ")) {
+                    return Integer.parseInt(line.substring("player: ".length()).trim());
+                }
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Kein Highscore gefunden, starte bei 0.");
+            System.err.println("Kein Player-Highscore gefunden, starte bei 0");
+        }
+        return 0;
+    }
+
+    public int loadBotHighscore() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("bot: ")) {
+                    return Integer.parseInt(line.substring("bot: ".length()).trim());
+                }
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Kein Bot-Highscore gefunden, starte bei 0");
         }
         return 0;
     }
 
     /**
      * Is high score beaten.
-     * Checks if the current score is higher than the global high score.
-     * If so, updates the global high score and saves it.
+     * Checks if the current high score is greater than the global high score.
+     * If so, updates the global high score and saves it to the .stats file.
+     * Also checks for bot high score.
      */
     public void isHighScoreBeaten() {
-        int currentScore = Integer.parseInt(currentHighScoreTextField.getText());
-        int globalHighScore = Integer.parseInt(globalHighScoreTextField.getText());
+        int currentScore = Integer.parseInt(currentHighScoreTextFieldPlayer.getText());
+        int globalHighScore = Integer.parseInt(globalHighScoreTextFieldPlayer.getText());
+
+        int currentBotScore = Integer.parseInt(currentHighScoreTextFieldBot.getText());
+        int globalBotScore = Integer.parseInt(globalHighScoreTextFieldBot.getText());
+
         if (currentScore > globalHighScore) {
-            globalHighScoreTextField.setText(String.valueOf(currentScore));
-            saveHighScore();
+            globalHighScoreTextFieldPlayer.setText(String.valueOf(currentScore));
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
+                writer.write("player: " + currentHighScoreTextFieldPlayer.getText());
+                writer.newLine();
+                writer.write("bot: " + globalHighScoreTextFieldBot.getText());
+            } catch (IOException e) {
+                System.err.println("Fehler beim Speichern: " + e.getMessage());
+            }
+        } else if (currentBotScore > globalBotScore) {
+            globalHighScoreTextFieldBot.setText(String.valueOf(currentBotScore));
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
+                writer.write("player: " + globalHighScoreTextFieldPlayer.getText());
+                writer.newLine();
+                writer.write("bot: " + currentHighScoreTextFieldBot.getText());
+
+            } catch (IOException e) {
+                System.err.println("Fehler beim Speichern: " + e.getMessage());
+            }
         }
     }
 
@@ -266,7 +295,7 @@ public class GameController {
      * Increases current high score by 1, checks for global high score update, and sets winner text.
      */
     public void playerWin() {
-        currentHighScoreTextField.setText(String.valueOf(Integer.parseInt(currentHighScoreTextField.getText()) + 1));
+        currentHighScoreTextFieldPlayer.setText(String.valueOf(Integer.parseInt(currentHighScoreTextFieldPlayer.getText()) + 1));
         isHighScoreBeaten();
         winnerTextField.setText("You Win!");
     }
@@ -276,7 +305,7 @@ public class GameController {
      * Resets current high score to 0, checks for global high score update, and sets winner text.
      */
     public void botWin() {
-        currentHighScoreTextField.setText("0");
+        currentHighScoreTextFieldPlayer.setText("0");
         isHighScoreBeaten();
         winnerTextField.setText("You Lose!");
     }
