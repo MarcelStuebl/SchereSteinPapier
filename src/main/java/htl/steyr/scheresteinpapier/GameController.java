@@ -365,7 +365,6 @@ public class GameController {
      */
     public void gestureSelected() {
         hideButtons();
-        showGesture(player.getSelectedGesture(), playerShowGesture);
         bot.setRandomGesture();
         revealWinner();
     }
@@ -388,6 +387,7 @@ public class GameController {
                 throw new RuntimeException(e);
             }
             showGesture(bot.getSelectedGesture(), botShowGesture);
+            showGesture(player.getSelectedGesture(), playerShowGesture);
             if (getWinner() == player) {
                 playerWin();
             } else if (getWinner() == bot) {
@@ -409,12 +409,10 @@ public class GameController {
     public Player getWinner() {
         int playerGestureID = player.getSelectedGesture().getID();
         int botGestureID = bot.getSelectedGesture().getID();
-        // Schere = 0, Stein = 1, Papier = 2, Brunnen = 3
 
-        if (playerGestureID == 3 && (botGestureID == 0 || botGestureID == 1))
-            return player;    // Brunnen schlägt Schere und Stein
-        if (botGestureID == 3 && (playerGestureID == 0 || playerGestureID == 1))
-            return bot;    // Brunnen schlägt Schere und Stein
+        // Schere = 0, Stein = 1, Papier = 2, Brunnen = 3
+        if (playerGestureID == 3 && (botGestureID == 0 || botGestureID == 1)) return player;    // Brunnen schlägt Schere und Stein
+        if (botGestureID == 3 && (playerGestureID == 0 || playerGestureID == 1)) return bot;    // Brunnen schlägt Schere und Stein
         if (playerGestureID == 2 && botGestureID == 3) return player;   // Papier vs Brunnen
         if (botGestureID == 2 && playerGestureID == 3) return bot;      // Papier vs Brunnen
         if (playerGestureID == 0 && botGestureID == 1) return bot;      // Schere vs Stein
@@ -427,3 +425,7 @@ public class GameController {
     }
 
 }
+
+
+
+
