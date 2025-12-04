@@ -54,7 +54,7 @@ public class GameController {
      */
     public void initialize() throws SQLException {
         DatabaseUser dbUser = new DatabaseUser();
-        System.out.println("Angemeldeter Benutzer: " + dbUser.getAllUsers().getFirst().getVorname() + " " + dbUser.getAllUsers().getFirst().getNachname());
+        System.out.println("USER: " + dbUser.getAllUsers().getFirst().getVorname() + " " + dbUser.getAllUsers().getFirst().getNachname());
 
         globalHighScoreTextFieldPlayer.setText("" + loadPlayerHighscore());
         globalHighScoreTextFieldBot.setText("" + loadBotHighscore());
