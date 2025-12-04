@@ -1,6 +1,4 @@
-package htl.steyr.scheresteinpapier;
-
-import htl.steyr.scheresteinpapier.Model.Gesture;
+package htl.steyr.scheresteinpapier.Model;
 
 import java.util.Random;
 

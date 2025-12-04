@@ -1,6 +1,8 @@
 package htl.steyr.scheresteinpapier;
 
 import htl.steyr.scheresteinpapier.Model.Gesture;
+import htl.steyr.scheresteinpapier.Model.Player;
+import htl.steyr.scheresteinpapier.database.DatabaseUser;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -13,6 +15,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 
 import java.io.*;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Random;
 import java.util.logging.Logger;
@@ -49,7 +52,10 @@ public class GameController {
      * Loads highscore and starts background music.
      * Also sets up volume control for the music.
      */
-    public void initialize() {
+    public void initialize() throws SQLException {
+        DatabaseUser dbUser = new DatabaseUser();
+        System.out.println("Angemeldeter Benutzer: " + dbUser.getAllUsers().getFirst().getVorname() + " " + dbUser.getAllUsers().getFirst().getNachname());
+
         globalHighScoreTextFieldPlayer.setText("" + loadPlayerHighscore());
         globalHighScoreTextFieldBot.setText("" + loadBotHighscore());
         songChoiceComboBox.getItems().addAll("Lobby Classic", "Der Mann mit dem Koks", "Epic Boss Fight", "Minecraft Theme", "Deine Augen", "Intastellar");
