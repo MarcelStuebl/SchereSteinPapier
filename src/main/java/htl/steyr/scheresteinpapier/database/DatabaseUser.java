@@ -68,6 +68,27 @@ public class DatabaseUser {
         return user;
     }
 
+    public List<User> getBestUsers(int limit) throws SQLException {
+        List<User> users = new ArrayList<>();
+        String query = "SELECT id, username, highscore FROM user ORDER BY highscore DESC LIMIT ? ";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setInt(1, limit);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    User user = new User(
+                            rs.getInt("id"),
+                            rs.getString("username"),
+                            rs.getInt("highscore")
+                    );
+                    users.add(user);
+                }
+            }
+        }
+        return users;
+    }
+
 
     public void addUser(User user) throws SQLException {
         String query = "INSERT INTO user (username, highscore) VALUES (?, ?)";

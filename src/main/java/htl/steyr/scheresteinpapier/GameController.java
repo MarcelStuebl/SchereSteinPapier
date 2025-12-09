@@ -6,6 +6,7 @@ import htl.steyr.scheresteinpapier.Model.User;
 import htl.steyr.scheresteinpapier.database.DatabaseUser;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
@@ -17,13 +18,15 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 
 import java.io.*;
+import java.net.URL;
 import java.sql.SQLException;
 import java. util.Objects;
 import java.util. Random;
+import java.util.ResourceBundle;
 import java.util. logging.Logger;
 
 
-public class GameController {
+public class GameController implements Initializable {
     @FXML
     public Button schereButton;
     @FXML
@@ -73,8 +76,8 @@ public class GameController {
         return this.currentUser;
     }
 
-    @FXML
-    public void initialize() throws SQLException {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         // Highscores laden
         if (currentUser != null) {
             globalHighScoreTextFieldPlayer.setText("" + currentUser.getHighscore());
@@ -82,7 +85,12 @@ public class GameController {
             globalHighScoreTextFieldPlayer.setText("0");
         }
 
-        User bestUser = databaseUser.getBestUser();
+        User bestUser = null;
+        try {
+            bestUser = databaseUser.getBestUser();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         if (bestUser != null) {
             globalHighScoreTextField.setText("" + bestUser.getHighscore());
         } else {
@@ -417,6 +425,7 @@ public class GameController {
         if (playerGestureID == 2 && botGestureID == 1) return player;   // Papier vs Stein
         return null;    // Unentschieden
     }
+
 
 
 }

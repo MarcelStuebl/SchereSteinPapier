@@ -20,7 +20,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class StartController {
+public class StartController implements Initializable {
 
     public AnchorPane root;
     public ListView highscoreListView;
@@ -29,6 +29,21 @@ public class StartController {
 
     private final DatabaseUser databaseUser = new DatabaseUser();
     public User currentUser;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            for (User user : databaseUser.getBestUsers(5)) {
+                highscoreListView.getItems().add(user.getUsername() + " - Highscore: " + user.getHighscore());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
 
     public void startGame() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SartApplication.class.getResource("game-view.fxml"));
@@ -62,4 +77,6 @@ public class StartController {
             }
         }
     }
+
+
 }
