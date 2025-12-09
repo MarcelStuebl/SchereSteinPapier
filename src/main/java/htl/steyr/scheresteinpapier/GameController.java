@@ -10,6 +10,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
@@ -54,7 +55,7 @@ public class GameController {
      */
     public void initialize() throws SQLException {
         DatabaseUser dbUser = new DatabaseUser();
-        System.out.println("USER: " + dbUser.getAllUsers().getFirst().getUsername());
+        System.out.println("USER: " + dbUser.getAllUsers().getFirst().getUsername() + " HIGHSCORE: " + dbUser.getAllUsers().getFirst().getHighscore());
 
         globalHighScoreTextFieldPlayer.setText("" + loadPlayerHighscore());
         globalHighScoreTextFieldBot.setText("" + loadBotHighscore());

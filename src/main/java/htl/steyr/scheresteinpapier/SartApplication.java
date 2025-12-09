@@ -9,14 +9,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class GameApplication extends Application {
+public class SartApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource("game-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SartApplication.class.getResource("start-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Schere Stein Papier");
         stage.setScene(scene);
-        stage.getIcons().add(new Image(Objects.requireNonNull(GameApplication.class.getResourceAsStream("img/icon.png"))));
+        stage.getIcons().add(new Image(Objects.requireNonNull(SartApplication.class.getResourceAsStream("img/icon.png"))));
         stage.show();
 
 
