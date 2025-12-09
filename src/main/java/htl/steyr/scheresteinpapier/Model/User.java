@@ -4,21 +4,18 @@ import javafx.beans.property.*;
 
 public class User {
     private int id;
-    private String vorname;
-    private String nachname;
+    private String username;
     private int highscore;
 
     public User() {
         this.id = 0;
-        this.vorname = "";
-        this.nachname = "";
+        this.username = "";
         this.highscore = 0;
     }
 
-    public User(int id, String vorname, String nachname, int highscore) {
+    public User(int id, String username, int highscore) {
         this.id = id;
-        this.vorname = vorname;
-        this.nachname = nachname;
+        this.username = username;
         this.highscore = highscore;
     }
 
@@ -26,16 +23,10 @@ public class User {
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
-    // Vorname
-    public String getVorname() { return vorname; }
-    public void setVorname(String vorname) {
-        this.vorname = vorname;
-    }
-
-    // Nachname
-    public String getNachname() { return nachname; }
-    public void setNachname(String nachname) {
-        this.nachname = nachname;
+    // Username
+    public String getUsername() { return username; }
+    public void setUsername(String vorname) {
+        this.username = vorname;
     }
 
 

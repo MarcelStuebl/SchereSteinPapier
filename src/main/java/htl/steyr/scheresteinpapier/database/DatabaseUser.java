@@ -11,7 +11,7 @@ public class DatabaseUser {
 
     public List<User> getAllUsers() throws SQLException {
         List<User> users = new ArrayList<>();
-        String query = "SELECT id, vorname, nachname, highscore FROM user";
+        String query = "SELECT id, username, highscore FROM user";
 
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement();
@@ -20,8 +20,7 @@ public class DatabaseUser {
             while (rs.next()) {
                 User user = new User(
                         rs.getInt("id"),
-                        rs.getString("vorname"),
-                        rs.getString("nachname"),
+                        rs.getString("username"),
                         rs.getInt("highscore")
                 );
                 users.add(user);
@@ -32,14 +31,13 @@ public class DatabaseUser {
 
 
     public void addUser(User user) throws SQLException {
-        String query = "INSERT INTO user (vorname, nachname, highscore) VALUES (?, ?, ?)";
+        String query = "INSERT INTO user (username, highscore) VALUES (?, ?, ?)";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
-            pstmt.setString(1, user.getVorname());
-            pstmt.setString(2, user.getNachname());
-            pstmt.setInt(3, user.getHighscore());
+            pstmt.setString(1, user.getUsername());
+            pstmt.setInt(2, user.getHighscore());
             pstmt.executeUpdate();
 
             ResultSet rs = pstmt.getGeneratedKeys();
