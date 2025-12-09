@@ -2,6 +2,7 @@ package htl.steyr.scheresteinpapier;
 
 import htl.steyr.scheresteinpapier.Model.Gesture;
 import htl.steyr.scheresteinpapier.Model.Player;
+import htl.steyr.scheresteinpapier.Model.User;
 import htl.steyr.scheresteinpapier.database.DatabaseUser;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
@@ -47,6 +48,8 @@ public class GameController {
     public Player player = new Player();
     public Player bot = new Player();
 
+    public User currentUser;
+
 
     /**
      * Initialize.
@@ -63,6 +66,12 @@ public class GameController {
         // Event listener auf Value für die ScrollBar hinzufügen, um Volumen zu ändern
         volumeScrollBar.valueProperty().addListener((observable, oldValue, newValue)
                 -> mediaPlayer.setVolume(newValue.doubleValue()));
+    }
+
+
+    public void setCurrentUser(User user){
+        this.currentUser = user;
+        System.out.println("Current user set to: " + user.getUsername());
     }
 
     /**

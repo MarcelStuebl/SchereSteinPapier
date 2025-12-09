@@ -42,6 +42,8 @@ public class StartController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(SartApplication.class.getResource("game-view.fxml"));
         Parent newRoot = fxmlLoader.load();
         Scene newScene = new Scene(newRoot);
+        GameController controller = fxmlLoader.getController();
+        controller.setCurrentUser(currentUser);
         Stage currentStage = (Stage) root.getScene().getWindow();
 
         currentStage.setTitle("Schere Stein Papier");
