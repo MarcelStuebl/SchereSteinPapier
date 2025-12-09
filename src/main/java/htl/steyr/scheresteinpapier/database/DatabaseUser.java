@@ -15,7 +15,7 @@ public class DatabaseUser {
 
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt. executeQuery(query)) {
+             ResultSet rs = stmt.executeQuery(query)) {
 
             while (rs.next()) {
                 User user = new User(
@@ -54,7 +54,7 @@ public class DatabaseUser {
         String query = "UPDATE user SET highscore = ? WHERE id = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn. prepareStatement(query)) {
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
 
             pstmt.setInt(1, user.getHighscore());
             pstmt.setInt(2, user.getId());

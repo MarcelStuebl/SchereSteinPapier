@@ -23,7 +23,7 @@ public class DatabaseConnection {
     public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
             try {
-                Class. forName("com.mysql.cj.jdbc.Driver");
+                Class.forName("com.mysql.cj.jdbc.Driver");
                 connection = DriverManager.getConnection(URL, USER, PASSWORD);
             } catch (ClassNotFoundException e) {
                 throw new SQLException("MySQL JDBC Driver nicht gefunden", e);
