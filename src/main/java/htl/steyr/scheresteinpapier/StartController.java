@@ -31,6 +31,7 @@ public class StartController implements Initializable {
     public Button playButton;
 
     private final DatabaseUser databaseUser = new DatabaseUser();
+    public User currentUser;
 
 
     @Override
@@ -50,25 +51,19 @@ public class StartController implements Initializable {
 
 
     public void playButtonPressed(ActionEvent actionEvent) throws SQLException {
-
         if (!userTextField.getText().isEmpty()) {
             if (databaseUser.getUser(userTextField.getText()) != null) {
-                User currentUser = databaseUser.getUser(userTextField.getText());
-                System.out.println("Welcome back " + currentUser.getUsername() + "! Your highscore is: " + currentUser.getHighscore());
+                currentUser = databaseUser.getUser(userTextField.getText());
             } else {
-                User newUser = new User(userTextField.getText());
-                databaseUser.addUser(newUser);
-                System.out.println("New user created: " + newUser.getUsername());
+                currentUser = new User(userTextField.getText());
+                databaseUser.addUser(currentUser);
             }
-
-
 
             try {
                 startGame();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
         }
 
 
