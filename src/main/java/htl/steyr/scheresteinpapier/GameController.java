@@ -59,7 +59,6 @@ public class GameController implements Initializable {
     public ComboBox<String> songChoiceComboBox;
 
     private MediaPlayer mediaPlayer;
-    private static final String FILE_NAME = ". stats";
 
     public Player player = new Player();
     public Player bot = new Player();
