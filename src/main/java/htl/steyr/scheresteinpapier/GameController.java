@@ -5,74 +5,100 @@ import htl.steyr.scheresteinpapier.Model.Player;
 import htl.steyr.scheresteinpapier.Model.User;
 import htl.steyr.scheresteinpapier.database.DatabaseUser;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 
 import java.io.*;
 import java.sql.SQLException;
-import java.util.Objects;
-import java.util.Random;
-import java.util.logging.Logger;
+import java. util.Objects;
+import java.util. Random;
+import java.util. logging.Logger;
 
 
 public class GameController {
+    @FXML
     public Button schereButton;
+    @FXML
     public Button steinButton;
+    @FXML
     public Button papierButton;
+    @FXML
     public Button brunnenButton;
+    @FXML
     public ImageView playerShowGesture;
+    @FXML
     public ImageView botShowGesture;
+    @FXML
     public Button resetButton;
+    @FXML
     public ProgressBar botProgressBar;
 
+    @FXML
     public Text globalHighScoreTextFieldPlayer;
+    @FXML
     public Text currentHighScoreTextFieldPlayer;
-    public Text globalHighScoreTextFieldBot;
-    public Text currentHighScoreTextFieldBot;
+    @FXML
+    public Text globalHighScoreTextField;
+    @FXML
     public Text winnerTextField;
 
+    @FXML
     public ScrollBar volumeScrollBar;
+    @FXML
     public ComboBox<String> songChoiceComboBox;
-    private MediaPlayer mediaPlayer;
 
-    private static final String FILE_NAME = ".stats";
+    private MediaPlayer mediaPlayer;
+    private static final String FILE_NAME = ". stats";
 
     public Player player = new Player();
     public Player bot = new Player();
 
+    private DatabaseUser databaseUser = new DatabaseUser();
     public User currentUser;
 
 
-    /**
-     * Initialize.
-     * Loads highscore and starts background music.
-     * Also sets up volume control for the music.
-     */
-    public void initialize() {
-        globalHighScoreTextFieldPlayer.setText("" + loadPlayerHighscore());
-        globalHighScoreTextFieldBot.setText("" + loadBotHighscore());
+    public void setCurrentUser(User user) {
+        this.currentUser = user;
+    }
+
+    public User getCurrentUser() {
+        return this.currentUser;
+    }
+
+    @FXML
+    public void initialize() throws SQLException {
+        // Highscores laden
+        if (currentUser != null) {
+            globalHighScoreTextFieldPlayer.setText("" + currentUser.getHighscore());
+        } else {
+            globalHighScoreTextFieldPlayer.setText("0");
+        }
+
+        User bestUser = databaseUser.getBestUser();
+        if (bestUser != null) {
+            globalHighScoreTextField.setText("" + bestUser.getHighscore());
+        } else {
+            globalHighScoreTextField.setText("0");
+        }
+
+        // Songs initialisieren
         songChoiceComboBox.getItems().addAll("Lobby Classic", "Der Mann mit dem Koks", "Epic Boss Fight", "Minecraft Theme", "Deine Augen", "Intastellar");
         songChoiceComboBox.setValue("Lobby Classic");
         playBackgroundMusic(songChoiceComboBox.getValue());
 
-        // Event listener auf Value für die ScrollBar hinzufügen, um Volumen zu ändern
+        // Volume Listener
         volumeScrollBar.valueProperty().addListener((observable, oldValue, newValue)
                 -> mediaPlayer.setVolume(newValue.doubleValue()));
     }
 
-
-    public void setCurrentUser(User user){
-        this.currentUser = user;
-        System.out.println("Current user set to: " + user.getUsername());
-    }
 
     /**
      * Play background music.
@@ -117,48 +143,6 @@ public class GameController {
 
 
     /**
-     * Load player highscore int from .stats file.
-     * If no file exists, returns 0.
-     *
-     * @return the player highscore as int
-     */
-    public int loadPlayerHighscore() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.startsWith("player: ")) {
-                    return Integer.parseInt(line.substring("player: ".length()).trim());
-                }
-            }
-        } catch (IOException | NumberFormatException e) {
-            System.err.println("Kein Player-Highscore gefunden, starte bei 0");
-        }
-        return 0;
-    }
-
-
-    /**
-     * Load bot highscore int from .stats file.
-     * If no file exists, returns 0.
-     *
-     * @return the bot highscore as int
-     */
-    public int loadBotHighscore() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.startsWith("bot: ")) {
-                    return Integer.parseInt(line.substring("bot: ".length()).trim());
-                }
-            }
-        } catch (IOException | NumberFormatException e) {
-            System.err.println("Kein Bot-Highscore gefunden, starte bei 0");
-        }
-        return 0;
-    }
-
-
-    /**
      * Is high score beaten.
      * Checks if the current high score exceeds the global high score for player or bot.
      * If so, updates the global high score.
@@ -167,45 +151,27 @@ public class GameController {
         int currentPlayerScore = Integer.parseInt(currentHighScoreTextFieldPlayer.getText());
         int globalPlayerScore = Integer.parseInt(globalHighScoreTextFieldPlayer.getText());
 
-        int currentBotScore = Integer.parseInt(currentHighScoreTextFieldBot.getText());
-        int globalBotScore = Integer.parseInt(globalHighScoreTextFieldBot.getText());
-
         if (currentPlayerScore > globalPlayerScore) {
-            updateHighScore(currentPlayerScore, true);
-        } else if (currentBotScore > globalBotScore) {
-            updateHighScore(currentBotScore, false);
+            updateHighScore(currentPlayerScore);
         }
     }
 
+
     /**
      * Update high score.
-     * Updates the global high score text field and saves it to the .stats file.
+     * Updates the global high score text field and persists the new high score to the database.
      *
      * @param newScore the new score
-     * @param isPlayer true if player score, false if bot score
      */
-    public void updateHighScore(int newScore, boolean isPlayer) {
-        if (isPlayer) {
-            globalHighScoreTextFieldPlayer.setText(String.valueOf(newScore));
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
-                writer.write("player: " + newScore);
-                writer.newLine();
-                writer.write("bot: " + globalHighScoreTextFieldBot.getText());
-            } catch (IOException e) {
-                System.err.println("Fehler beim Speichern: " + e.getMessage());
-            }
-        } else {
-            globalHighScoreTextFieldBot.setText(String.valueOf(newScore));
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
-                writer.write("player: " + globalHighScoreTextFieldPlayer.getText());
-                writer.newLine();
-                writer.write("bot: " + newScore);
-
-            } catch (IOException e) {
-                System.err.println("Fehler beim Speichern: " + e.getMessage());
-            }
+    public void updateHighScore(int newScore) {
+        globalHighScoreTextFieldPlayer.setText(String.valueOf(newScore));
+        try {
+            currentUser.setHighscore(newScore);
+            databaseUser.updateUserScore(currentUser);
+            globalHighScoreTextField.setText("" + databaseUser.getBestUser().getHighscore());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-
     }
 
     /**
@@ -331,7 +297,6 @@ public class GameController {
      * Increases current high score by 1, checks for global high score update, and sets winner text.
      */
     public void playerWin() {
-        currentHighScoreTextFieldBot.setText("0");
         currentHighScoreTextFieldPlayer.setText(String.valueOf(Integer.parseInt(currentHighScoreTextFieldPlayer.getText()) + 1));
         isHighScoreBeaten();
         winnerTextField.setText("You Win!");
@@ -343,8 +308,6 @@ public class GameController {
      */
     public void botWin() {
         currentHighScoreTextFieldPlayer.setText("0");
-        currentHighScoreTextFieldBot.setText(String.valueOf(Integer.parseInt(currentHighScoreTextFieldBot.getText()) + 1));
-        isHighScoreBeaten();
         winnerTextField.setText("You Lose!");
     }
 
@@ -440,8 +403,10 @@ public class GameController {
         int botGestureID = bot.getSelectedGesture().getID();
 
         // Schere = 0, Stein = 1, Papier = 2, Brunnen = 3
-        if (playerGestureID == 3 && (botGestureID == 0 || botGestureID == 1)) return player;    // Brunnen schlägt Schere und Stein
-        if (botGestureID == 3 && (playerGestureID == 0 || playerGestureID == 1)) return bot;    // Brunnen schlägt Schere und Stein
+        if (playerGestureID == 3 && (botGestureID == 0 || botGestureID == 1))
+            return player;    // Brunnen schlägt Schere und Stein
+        if (botGestureID == 3 && (playerGestureID == 0 || playerGestureID == 1))
+            return bot;    // Brunnen schlägt Schere und Stein
         if (playerGestureID == 2 && botGestureID == 3) return player;   // Papier vs Brunnen
         if (botGestureID == 2 && playerGestureID == 3) return bot;      // Papier vs Brunnen
         if (playerGestureID == 0 && botGestureID == 1) return bot;      // Schere vs Stein
@@ -452,6 +417,7 @@ public class GameController {
         if (playerGestureID == 2 && botGestureID == 1) return player;   // Papier vs Stein
         return null;    // Unentschieden
     }
+
 
 }
 

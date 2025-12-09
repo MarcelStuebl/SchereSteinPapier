@@ -2,9 +2,7 @@ package htl.steyr.scheresteinpapier;
 
 import htl.steyr.scheresteinpapier.Model.User;
 import htl.steyr.scheresteinpapier.database.DatabaseUser;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -22,9 +20,8 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class StartController implements Initializable {
+public class StartController {
 
-    @FXML
     public AnchorPane root;
     public ListView highscoreListView;
     public TextField userTextField;
@@ -33,17 +30,14 @@ public class StartController implements Initializable {
     private final DatabaseUser databaseUser = new DatabaseUser();
     public User currentUser;
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
-
     public void startGame() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SartApplication.class.getResource("game-view.fxml"));
+        GameController gameController = new GameController();
+        gameController.setCurrentUser(currentUser);
+        fxmlLoader.setController(gameController);
         Parent newRoot = fxmlLoader.load();
+
         Scene newScene = new Scene(newRoot);
-        GameController controller = fxmlLoader.getController();
-        controller.setCurrentUser(currentUser);
         Stage currentStage = (Stage) root.getScene().getWindow();
 
         currentStage.setTitle("Schere Stein Papier");
@@ -67,20 +61,5 @@ public class StartController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
