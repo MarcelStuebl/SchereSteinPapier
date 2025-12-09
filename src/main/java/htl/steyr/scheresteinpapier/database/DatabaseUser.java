@@ -29,9 +29,28 @@ public class DatabaseUser {
         return users;
     }
 
+    public User getUser(String username) throws SQLException {
+        String query = "SELECT id, username, highscore FROM user WHERE username = ?";
+
+        User user = null;
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, username);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    user = new User(
+                            rs.getInt("id"),
+                            rs.getString("username"),
+                            rs.getInt("highscore")
+                    );
+                }
+            }
+        }
+        return user;
+    }
 
     public void addUser(User user) throws SQLException {
-        String query = "INSERT INTO user (username, highscore) VALUES (?, ?, ?)";
+        String query = "INSERT INTO user (username, highscore) VALUES (?, ?)";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -40,13 +59,13 @@ public class DatabaseUser {
             pstmt.setInt(2, user.getHighscore());
             pstmt.executeUpdate();
 
-            ResultSet rs = pstmt.getGeneratedKeys();
-            if (rs.next()) {
-                user.setId(rs.getInt(1));
+            try (ResultSet rs = pstmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    user.setId(rs.getInt(1));
+                }
             }
         }
     }
-
 
     public void updateUserScore(User user) throws SQLException {
         String query = "UPDATE user SET highscore = ? WHERE id = ?";

@@ -13,6 +13,11 @@ public class User {
         this.highscore = 0;
     }
 
+    public User(String username) {
+        this.username = username;
+        this.highscore = 0;
+    }
+
     public User(int id, String username, int highscore) {
         this.id = id;
         this.username = username;

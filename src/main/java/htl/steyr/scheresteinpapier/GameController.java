@@ -53,10 +53,7 @@ public class GameController {
      * Loads highscore and starts background music.
      * Also sets up volume control for the music.
      */
-    public void initialize() throws SQLException {
-        DatabaseUser dbUser = new DatabaseUser();
-        System.out.println("USER: " + dbUser.getAllUsers().getFirst().getUsername() + " HIGHSCORE: " + dbUser.getAllUsers().getFirst().getHighscore());
-
+    public void initialize() {
         globalHighScoreTextFieldPlayer.setText("" + loadPlayerHighscore());
         globalHighScoreTextFieldBot.setText("" + loadBotHighscore());
         songChoiceComboBox.getItems().addAll("Lobby Classic", "Der Mann mit dem Koks", "Epic Boss Fight", "Minecraft Theme", "Deine Augen", "Intastellar");
