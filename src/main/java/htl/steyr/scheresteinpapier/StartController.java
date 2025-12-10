@@ -2,7 +2,7 @@ package htl.steyr.scheresteinpapier;
 
 import htl.steyr.scheresteinpapier.Model.User;
 import htl.steyr.scheresteinpapier.database.DatabaseUser;
-import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -24,15 +24,20 @@ import java.util.ResourceBundle;
 
 public class StartController implements Initializable {
 
-    public AnchorPane root;
-    public ListView highscoreListView;
-    public TextField userTextField;
-    public Button playButton;
+    @FXML private AnchorPane root;
+    @FXML private ListView highscoreListView;
+    @FXML private TextField userTextField;
+    @FXML private Button playButton;
 
     private final DatabaseUser databaseUser = new DatabaseUser();
-    public User currentUser;
+    private User currentUser;
 
 
+    /**
+     * Sets up the highscore list view with the top 5 users from the database.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -44,7 +49,12 @@ public class StartController implements Initializable {
         }
     }
 
-    public void serializeUser() throws IOException {
+
+    /**
+     * Serializes the current user to a file named "user.dat".
+     * @throws IOException if an I/O error occurs while writing the file.
+     */
+    private void serializeUser() throws IOException {
         FileOutputStream out = new FileOutputStream("user.dat");
         ObjectOutputStream oos = new ObjectOutputStream(out);
         oos.writeObject(currentUser);
@@ -53,7 +63,11 @@ public class StartController implements Initializable {
     }
 
 
-    public void startGame() throws IOException {
+    /**
+     * Starts the game by loading the game view and setting it as the current scene.
+     * @throws IOException if an I/O error occurs while loading the FXML file.
+     */
+    private void startGame() throws IOException {
         serializeUser();
 
         FXMLLoader fxmlLoader = new FXMLLoader(SartApplication.class.getResource("game-view.fxml"));
@@ -67,8 +81,11 @@ public class StartController implements Initializable {
         currentStage.getIcons().add(new Image(Objects.requireNonNull(SartApplication.class.getResourceAsStream("img/icon.png"))));
     }
 
-
-    public void playButtonPressed(ActionEvent actionEvent) throws SQLException {
+    /**
+     * Handles the play button press event. Checks if the username is valid and starts the game.
+     * @throws SQLException if a database access error occurs.
+     */
+    @FXML private void playButtonPressed() throws SQLException {
         if (!userTextField.getText().isEmpty()) {
             if (databaseUser.getUser(userTextField.getText()) != null) {
                 currentUser = databaseUser.getUser(userTextField.getText());
@@ -87,3 +104,7 @@ public class StartController implements Initializable {
 
 
 }
+
+
+
+
