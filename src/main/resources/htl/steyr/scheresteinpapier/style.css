@@ -237,3 +237,95 @@
 .gesture-Icons {
     -fx-background-color-alignment: center;
 }
+
+
+/* ============================================================
+   Settings Menu (MenuButton + menu content)
+   Ergänzung - verändert keine Farben / Schriftarten / Effekte
+   ============================================================ */
+
+.settings-menu-button {
+    -fx-padding: 6;
+    -fx-background-color: floralwhite;
+    -fx-border-color: burlywood;
+    -fx-border-width: 2px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(three-pass-box, #c9b896, 0, 0, 3, 3);
+    -fx-text-fill: saddlebrown;
+    -fx-font-weight: bold;
+}
+
+.settings-menu-button > .graphic {
+    -fx-preserve-ratio: true;
+    -fx-fit-width: 20px;
+    -fx-fit-height: 20px;
+}
+
+.menu-content {
+    -fx-padding: 8;
+    -fx-spacing: 6;
+    -fx-background-color: #fff9f0;
+    -fx-border-color: #d4c4a8;
+    -fx-border-width: 2px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(three-pass-box, #d4c4a8, 0, 0, 4, 4);
+}
+
+.menu-content .songChoice,
+.menu-content .combo-box {
+    -fx-pref-width: 160px;
+    -fx-background-color: floralwhite;
+    -fx-border-color: burlywood;
+    -fx-border-width: 2px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-padding: 4 6 4 6;
+}
+
+.menu-content .Volume-Bar {
+    -fx-pref-height: 18px;
+    -fx-pref-width: 140px;
+}
+
+.settings-menu-button .button {
+    -fx-background-color: transparent;
+}
+
+
+/* ============================================================
+   Fix: entferne blauen Hover/Selection-Hintergrund im Menu-Popup
+   ============================================================ */
+
+.settings-menu-button .menu-item,
+.menu-button .menu-item,
+.context-menu .menu-item {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.settings-menu-button .menu-item:hover,
+.menu-button .menu-item:hover,
+.context-menu .menu-item:hover,
+.context-menu .menu-item:armed,
+.context-menu .menu-item:focused {
+    -fx-background-color: transparent;
+}
+
+.settings-menu-button .menu-item .content,
+.context-menu .menu-item .content {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.settings-menu-button .combo-box,
+.settings-menu-button .scroll-bar,
+.settings-menu-button .slider,
+.context-menu .combo-box,
+.context-menu .scroll-bar,
+.context-menu .slider {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
