@@ -27,8 +27,8 @@ import java.util.logging.Logger;
 
 
 public class GameController implements Initializable {
-    public Text textWhoIsYou;
-    public Text textWhoIsBot;
+    @FXML private Text textWhoIsYou;
+    @FXML private Text textWhoIsBot;
     @FXML private Button schereButton;
     @FXML private Button steinButton;
     @FXML private Button papierButton;
