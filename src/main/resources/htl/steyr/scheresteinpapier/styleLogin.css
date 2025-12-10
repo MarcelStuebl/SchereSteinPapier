@@ -1,0 +1,89 @@
+.AnchorPane {
+    -fx-background-color: beige;
+}
+
+.highscore-list {
+    -fx-background-color: floralwhite;
+    -fx-border-color: burlywood;
+    -fx-border-width: 2px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-padding: 12px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 4, 0, 3, 3);
+}
+
+.highscore-list .list-cell {
+    -fx-font-family: "Georgia";
+    -fx-font-weight: bold;
+    -fx-text-fill: saddlebrown;
+    -fx-background-color: transparent;
+    -fx-padding: 6px 8px;
+}
+
+.highscore-list .list-cell:filled:selected,
+.highscore-list .list-cell:filled:selected:hover {
+    -fx-background-color: burlywood;
+    -fx-text-fill: white;
+}
+
+.highscore-list .list-cell:focused,
+.highscore-list .list-cell:focused:hover,
+.highscore-list .list-cell:hover {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-insets: 0;
+}
+
+.input-field {
+    -fx-background-color: floralwhite;
+    -fx-border-color: burlywood;
+    -fx-border-width: 2px;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-padding: 8px 12px;
+    -fx-font-family: "Georgia";
+    -fx-font-weight: bold;
+    -fx-text-fill: saddlebrown;
+    -fx-prompt-text-fill: derive(saddlebrown, -20%);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 2, 0, 1, 1);
+}
+
+.input-field:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.primary-button {
+    -fx-background-color: floralwhite;
+    -fx-background-radius: 12px;
+    -fx-border-color: burlywood;
+    -fx-border-radius: 12px;
+    -fx-border-width: 2px;
+    -fx-pref-height: 42px;
+    -fx-padding: 10px 24px;
+    -fx-font-family: "Georgia";
+    -fx-font-weight: bold;
+    -fx-text-fill: saddlebrown;
+    -fx-effect: dropshadow(three-pass-box, burlywood, 0, 0, 3, 3);
+}
+
+.primary-button:hover {
+    -fx-background-color: white;
+    -fx-translate-x: -1;
+    -fx-translate-y: -1;
+    -fx-effect: dropshadow(three-pass-box, burlywood, 0, 0, 5, 5);
+    -fx-cursor: hand;
+}
+.primary-button:pressed {
+    -fx-translate-x: 2;
+    -fx-translate-y: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 0, 0, 1, 1);
+}
+
+.login-panel .list-view,
+.login-panel .text-field,
+.login-panel .button,
+.login-panel .combo-box {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
