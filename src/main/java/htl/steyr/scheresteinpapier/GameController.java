@@ -20,10 +20,10 @@ import javafx.scene.text.Text;
 import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
-import java. util.Objects;
-import java.util. Random;
+import java.util.Objects;
+import java.util.Random;
 import java.util.ResourceBundle;
-import java.util. logging.Logger;
+import java.util.logging.Logger;
 
 
 public class GameController implements Initializable {
