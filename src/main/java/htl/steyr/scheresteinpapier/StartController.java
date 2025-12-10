@@ -14,7 +14,10 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -42,14 +45,19 @@ public class StartController implements Initializable {
         }
     }
 
-
+    public void serializeUser() throws IOException {
+        FileOutputStream out = new FileOutputStream("user.dat");
+        ObjectOutputStream oos = new ObjectOutputStream(out);
+        oos.writeObject(currentUser);
+        oos.flush();
+        oos.close();
+    }
 
 
     public void startGame() throws IOException {
+        serializeUser();
+
         FXMLLoader fxmlLoader = new FXMLLoader(SartApplication.class.getResource("game-view.fxml"));
-        GameController gameController = new GameController();
-        gameController.setCurrentUser(currentUser);
-        fxmlLoader.setController(gameController);
         Parent newRoot = fxmlLoader.load();
 
         Scene newScene = new Scene(newRoot);

@@ -65,19 +65,16 @@ public class GameController implements Initializable {
     public Player bot = new Player();
 
     private DatabaseUser databaseUser = new DatabaseUser();
-    public User currentUser;
-
-
-    public void setCurrentUser(User user) {
-        this.currentUser = user;
-    }
-
-    public User getCurrentUser() {
-        return this.currentUser;
-    }
+    public User currentUser = null;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            currentUser = deserializeUser();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
         // Highscores laden
         if (currentUser != null) {
             globalHighScoreTextFieldPlayer.setText("" + currentUser.getHighscore());
@@ -105,6 +102,15 @@ public class GameController implements Initializable {
         // Volume Listener
         volumeScrollBar.valueProperty().addListener((observable, oldValue, newValue)
                 -> mediaPlayer.setVolume(newValue.doubleValue()));
+    }
+
+
+    public User deserializeUser() throws IOException, ClassNotFoundException {
+        FileInputStream in = new FileInputStream("user.dat");
+        ObjectInputStream ois = new ObjectInputStream(in);
+        User deserializedUser = (User) ois.readObject();
+        ois.close();
+        return deserializedUser;
     }
 
 

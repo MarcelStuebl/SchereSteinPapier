@@ -2,7 +2,9 @@ package htl.steyr.scheresteinpapier.Model;
 
 import javafx.beans.property.*;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private int id;
     private String username;
     private int highscore;
