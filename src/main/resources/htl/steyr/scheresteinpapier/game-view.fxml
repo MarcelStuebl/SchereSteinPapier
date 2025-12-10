@@ -2,10 +2,14 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.CustomMenuItem?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -35,31 +39,71 @@
                 <Font size="28.0" />
             </font>
         </Text>
+
+        <!-- Player highscore / current run: IDs match Controller fields -->
         <Text fx:id="globalHighScoreTextFieldPlayer" layoutX="84.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="globalHigh" text="0" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="71.78515625">
             <font>
                 <Font size="28.0" />
             </font>
         </Text>
+
         <Text fx:id="winnerTextField" layoutX="60.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="winText" textAlignment="CENTER" wrappingWidth="879.2574402093887" AnchorPane.bottomAnchor="368.455078125" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.74255979061127" AnchorPane.topAnchor="349.361328125">
             <font>
                 <Font size="46.0" />
             </font>
         </Text>
-        <ScrollBar fx:id="volumeScrollBar" blockIncrement="0.1" layoutX="16.0" layoutY="563.0" max="1.0" orientation="VERTICAL" prefHeight="202.0" prefWidth="34.0" rotate="180.0" unitIncrement="0.1" value="0.5" visibleAmount="0.1" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" styleClass="Volume-Bar"/>
+
+        <!-- Settings MenuButton: enthält Lautstärke-ScrollBar + Lautsprecher-Icon + Song-Auswahl -->
+        <MenuButton fx:id="settingsMenuButton" layoutX="14.0" layoutY="699.0" styleClass="settings-menu-button" text="" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="699.0">
+            <graphic>
+                <ImageView fitHeight="20.0" fitWidth="20.0">
+                    <image>
+                        <Image url="@img/Volume.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <items>
+                <CustomMenuItem hideOnClick="false">
+                    <content>
+                        <VBox spacing="8.0" styleClass="menu-content">
+                            <ImageView fitHeight="28.0" fitWidth="28.0">
+                                <image>
+                                    <Image url="@img/Volume.png" />
+                                </image>
+                            </ImageView>
+                            <!-- IMPORTANT: fx:id matches Controller field -->
+                            <ScrollBar fx:id="volumeScrollBar" max="1.0" min="0.0" orientation="HORIZONTAL" prefWidth="160.0" styleClass="Volume-Bar" value="0.5" />
+                        </VBox>
+                    </content>
+                </CustomMenuItem>
+                <CustomMenuItem hideOnClick="false">
+                    <content>
+                        <VBox spacing="6.0" styleClass="menu-content">
+                            <!-- IMPORTANT: fx:id matches Controller field -->
+                            <ComboBox fx:id="songChoiceComboBox" prefWidth="160.0" styleClass="songChoice" />
+                        </VBox>
+                    </content>
+                </CustomMenuItem>
+            </items>
+        </MenuButton>
+
         <Button fx:id="brunnenButton" layoutX="750.0" layoutY="593.0" mnemonicParsing="false" onAction="#brunnenButtonPressed" prefHeight="150" prefWidth="150" styleClass="brunnen-button" AnchorPane.bottomAnchor="36.0" AnchorPane.rightAnchor="100.0" />
+
+        <!-- Player current run -->
         <Text fx:id="currentHighScoreTextFieldPlayer" layoutX="86.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="currentHigh" text="0">
             <font>
                 <Font size="28.0" />
             </font>
         </Text>
+
         <Text layoutX="24.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="currentRunScore" text="Current run" wrappingWidth="150.0" AnchorPane.leftAnchor="24.0">
             <font>
                 <Font size="28.0" />
             </font>
         </Text>
-        <Button disable="true" layoutX="10.0" layoutY="530.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" styleClass="VolumeIcon" AnchorPane.bottomAnchor="222.6" AnchorPane.leftAnchor="10.0" />
-        <ComboBox fx:id="songChoiceComboBox" layoutX="2.0" layoutY="487.0" onAction="#songChosenComboBox" prefHeight="5.0" prefWidth="34.0" style="-fx-max-width: 10px;" styleClass="songChoice" AnchorPane.leftAnchor="2.0" />
-        <Text layoutX="816.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="currentHighScore" text="Global Highscore" wrappingWidth="177.7999633789061" AnchorPane.rightAnchor="6.200036621093886">
+
+        <!-- Bot highscore / current run (IDs match Controller fields) -->
+        <Text layoutX="816.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="currentHighScore" text="Highscore Global" wrappingWidth="177.7999633789061" AnchorPane.rightAnchor="6.200036621093886">
             <font>
                 <Font size="28.0" />
             </font>
