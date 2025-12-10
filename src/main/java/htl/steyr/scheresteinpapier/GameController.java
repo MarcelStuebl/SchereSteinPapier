@@ -27,45 +27,40 @@ import java.util.logging.Logger;
 
 
 public class GameController implements Initializable {
-    @FXML
-    public Button schereButton;
-    @FXML
-    public Button steinButton;
-    @FXML
-    public Button papierButton;
-    @FXML
-    public Button brunnenButton;
-    @FXML
-    public ImageView playerShowGesture;
-    @FXML
-    public ImageView botShowGesture;
-    @FXML
-    public Button resetButton;
-    @FXML
-    public ProgressBar botProgressBar;
+    @FXML private Button schereButton;
+    @FXML private Button steinButton;
+    @FXML private Button papierButton;
+    @FXML private Button brunnenButton;
+    @FXML private ImageView playerShowGesture;
+    @FXML private ImageView botShowGesture;
+    @FXML private Button resetButton;
+    @FXML private ProgressBar botProgressBar;
 
-    @FXML
-    public Text globalHighScoreTextFieldPlayer;
-    @FXML
-    public Text currentHighScoreTextFieldPlayer;
-    @FXML
-    public Text globalHighScoreTextField;
-    @FXML
-    public Text winnerTextField;
+    @FXML private Text globalHighScoreTextFieldPlayer;
+    @FXML private Text currentHighScoreTextFieldPlayer;
+    @FXML private Text globalHighScoreTextField;
+    @FXML private Text winnerTextField;
 
-    @FXML
-    public ScrollBar volumeScrollBar;
-    @FXML
-    public ComboBox<String> songChoiceComboBox;
+    @FXML private ScrollBar volumeScrollBar;
+    @FXML private ComboBox<String> songChoiceComboBox;
 
     private MediaPlayer mediaPlayer;
 
-    public Player player = new Player();
-    public Player bot = new Player();
+    private Player player = new Player();
+    private Player bot = new Player();
 
-    private DatabaseUser databaseUser = new DatabaseUser();
-    public User currentUser = null;
+    private final DatabaseUser databaseUser = new DatabaseUser();
+    private User currentUser = null;
 
+
+
+
+    /**
+     * Initializes the game controller, loads user data, high scores, and sets up background music.
+     *
+     * @param url            the url
+     * @param resourceBundle the resource bundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -104,7 +99,15 @@ public class GameController implements Initializable {
     }
 
 
-    public User deserializeUser() throws IOException, ClassNotFoundException {
+    /**
+     * Deserialize user.
+     * Loads the user object from a file.
+     *
+     * @return the user
+     * @throws IOException            the io exception
+     * @throws ClassNotFoundException the class not found exception
+     */
+    private User deserializeUser() throws IOException, ClassNotFoundException {
         FileInputStream in = new FileInputStream("user.dat");
         ObjectInputStream ois = new ObjectInputStream(in);
         User deserializedUser = (User) ois.readObject();
@@ -149,7 +152,7 @@ public class GameController implements Initializable {
      * Event handler for song selection from the combo box.
      * Stops current music and plays the selected song.
      */
-    public void songChosenComboBox() {
+    @FXML private void songChosenComboBox() {
         mediaPlayer.stop();
         playBackgroundMusic(songChoiceComboBox.getValue());
     }
@@ -160,7 +163,7 @@ public class GameController implements Initializable {
      * Checks if the current high score exceeds the global high score for player or bot.
      * If so, updates the global high score.
      */
-    public void isHighScoreBeaten() {
+    private void isHighScoreBeaten() {
         int currentPlayerScore = Integer.parseInt(currentHighScoreTextFieldPlayer.getText());
         int globalPlayerScore = Integer.parseInt(globalHighScoreTextFieldPlayer.getText());
 
@@ -176,7 +179,7 @@ public class GameController implements Initializable {
      *
      * @param newScore the new score
      */
-    public void updateHighScore(int newScore) {
+    private void updateHighScore(int newScore) {
         globalHighScoreTextFieldPlayer.setText(String.valueOf(newScore));
         try {
             currentUser.setHighscore(newScore);
@@ -191,7 +194,7 @@ public class GameController implements Initializable {
      * Schere button pressed.
      * Sets player's selected gesture to Schere and proceeds.
      */
-    public void schereButtonPressed() {
+    @FXML private void schereButtonPressed() {
         player.setSelectedGesture(0);
         gestureSelected();
     }
@@ -200,7 +203,7 @@ public class GameController implements Initializable {
      * Stein button pressed.
      * Sets player's selected gesture to Stein and proceeds.
      */
-    public void steinButtonPressed() {
+    @FXML private void steinButtonPressed() {
         player.setSelectedGesture(1);
         gestureSelected();
     }
@@ -209,7 +212,7 @@ public class GameController implements Initializable {
      * Papier button pressed.
      * Sets player's selected gesture to Papier and proceeds.
      */
-    public void papierButtonPressed() {
+    @FXML private void papierButtonPressed() {
         player.setSelectedGesture(2);
         gestureSelected();
     }
@@ -218,7 +221,7 @@ public class GameController implements Initializable {
      * Brunnen button pressed.
      * Sets player's selected gesture to Brunnen and proceeds.
      */
-    public void brunnenButtonPressed() {
+    @FXML private void brunnenButtonPressed() {
         player.setSelectedGesture(3);
         gestureSelected();
     }
@@ -229,7 +232,7 @@ public class GameController implements Initializable {
      * Resets the game state for a new round.
      * Hides the gestures, shows the buttons, and clears the winner text.
      */
-    public void resetButtonPressed() {
+    private void resetButtonPressed() {
         playerShowGesture.setVisible(false);
         botShowGesture.setVisible(false);
         showButtons();
@@ -241,7 +244,7 @@ public class GameController implements Initializable {
      * Hide buttons.
      * Hides the gesture selection buttons.
      */
-    public void hideButtons() {
+    private void hideButtons() {
         schereButton.setVisible(false);
         steinButton.setVisible(false);
         papierButton.setVisible(false);
@@ -252,7 +255,7 @@ public class GameController implements Initializable {
      * Show buttons.
      * Shows the gesture selection buttons.
      */
-    public void showButtons() {
+    private void showButtons() {
         schereButton.setVisible(true);
         steinButton.setVisible(true);
         papierButton.setVisible(true);
@@ -284,7 +287,7 @@ public class GameController implements Initializable {
      * @param gesture the gesture
      * @param view    the view
      */
-    public void showGesture(Gesture gesture, ImageView view) {
+    private void showGesture(Gesture gesture, ImageView view) {
         view.setVisible(true);
         switch (gesture.getGesture()) {
             case 0:
@@ -309,7 +312,7 @@ public class GameController implements Initializable {
      * Player win.
      * Increases current high score by 1, checks for global high score update, and sets winner text.
      */
-    public void playerWin() {
+    private void playerWin() {
         currentHighScoreTextFieldPlayer.setText(String.valueOf(Integer.parseInt(currentHighScoreTextFieldPlayer.getText()) + 1));
         isHighScoreBeaten();
         winnerTextField.setText("You Win!");
@@ -319,7 +322,7 @@ public class GameController implements Initializable {
      * Bot win.
      * Resets current high score to 0, checks for global high score update, and sets winner text.
      */
-    public void botWin() {
+    private void botWin() {
         currentHighScoreTextFieldPlayer.setText("0");
         winnerTextField.setText("You Lose!");
     }
@@ -328,7 +331,7 @@ public class GameController implements Initializable {
      * Draw win.
      * Sets winner text to indicate a draw.
      */
-    public void drawWin() {
+    private void drawWin() {
         winnerTextField.setText("Draw!");
     }
 
@@ -339,7 +342,7 @@ public class GameController implements Initializable {
      *
      * @param animationDuration the animation duration
      */
-    public void progressBarAnimation(int animationDuration) {
+    private void progressBarAnimation(int animationDuration) {
         botProgressBar.setVisible(true);
         botProgressBar.setProgress(0);
 
@@ -368,7 +371,7 @@ public class GameController implements Initializable {
      * Handles the event when a player selects a gesture.
      * Hides buttons, shows player's gesture, sets bot's random gesture, and reveals the winner.
      */
-    public void gestureSelected() {
+    private void gestureSelected() {
         hideButtons();
         bot.setRandomGesture();
         revealWinner();
@@ -380,7 +383,7 @@ public class GameController implements Initializable {
      * Animates the bot's progress bar, then reveals the bot's gesture and determines the winner.
      * Updates the UI accordingly.
      */
-    public void revealWinner() {
+    private void revealWinner() {
         Random random = new Random();
         final int animationDuration = 1000 + random.nextInt(3000);
         progressBarAnimation(animationDuration);
@@ -411,7 +414,7 @@ public class GameController implements Initializable {
      *
      * @return the winner
      */
-    public Player getWinner() {
+    private Player getWinner() {
         int playerGestureID = player.getSelectedGesture().getID();
         int botGestureID = bot.getSelectedGesture().getID();
 

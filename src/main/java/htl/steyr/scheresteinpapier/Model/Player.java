@@ -3,7 +3,7 @@ package htl.steyr.scheresteinpapier.Model;
 import java.util.Random;
 
 public class Player {
-    Gesture gesture = new Gesture();
+    public Gesture gesture = new Gesture();
 
     public Gesture getSelectedGesture() {
         return this.gesture;

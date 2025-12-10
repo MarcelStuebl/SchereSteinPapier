@@ -1,7 +1,5 @@
 package htl.steyr.scheresteinpapier.Model;
 
-import javafx.beans.property.*;
-
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -26,16 +24,13 @@ public class User implements Serializable {
         this.highscore = highscore;
     }
 
-    // ID
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
-    // Username
     public String getUsername() { return username; }
     public void setUsername(String vorname) {
         this.username = vorname;
     }
-
 
     public int getHighscore() {
         return highscore;
@@ -44,3 +39,7 @@ public class User implements Serializable {
         this.highscore = highscore;
     }
 }
+
+
+
+
