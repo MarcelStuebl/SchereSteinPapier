@@ -40,7 +40,6 @@
             </font>
         </Text>
 
-        <!-- Player highscore / current run: IDs match Controller fields -->
         <Text fx:id="globalHighScoreTextFieldPlayer" layoutX="84.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="globalHigh" text="0" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="71.78515625">
             <font>
                 <Font size="28.0" />
@@ -53,7 +52,6 @@
             </font>
         </Text>
 
-        <!-- Settings MenuButton: enthält Lautstärke-ScrollBar + Lautsprecher-Icon + Song-Auswahl -->
         <MenuButton fx:id="settingsMenuButton" layoutX="14.0" layoutY="699.0" styleClass="settings-menu-button" text="" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="699.0">
             <graphic>
                 <ImageView fitHeight="20.0" fitWidth="20.0">
@@ -71,7 +69,6 @@
                                     <Image url="@img/Volume.png" />
                                 </image>
                             </ImageView>
-                            <!-- IMPORTANT: fx:id matches Controller field -->
                             <ScrollBar fx:id="volumeScrollBar" max="1.0" min="0.0" orientation="HORIZONTAL" prefWidth="160.0" styleClass="Volume-Bar" value="0.5" />
                         </VBox>
                     </content>
@@ -79,7 +76,6 @@
                 <CustomMenuItem hideOnClick="false">
                     <content>
                         <VBox spacing="6.0" styleClass="menu-content">
-                            <!-- IMPORTANT: fx:id matches Controller field -->
                             <ComboBox fx:id="songChoiceComboBox" prefWidth="160.0" styleClass="songChoice" />
                         </VBox>
                     </content>
@@ -89,7 +85,6 @@
 
         <Button fx:id="brunnenButton" layoutX="750.0" layoutY="593.0" mnemonicParsing="false" onAction="#brunnenButtonPressed" prefHeight="150" prefWidth="150" styleClass="brunnen-button" AnchorPane.bottomAnchor="36.0" AnchorPane.rightAnchor="100.0" />
 
-        <!-- Player current run -->
         <Text fx:id="currentHighScoreTextFieldPlayer" layoutX="86.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="currentHigh" text="0">
             <font>
                 <Font size="28.0" />
@@ -102,13 +97,12 @@
             </font>
         </Text>
 
-        <!-- Bot highscore / current run (IDs match Controller fields) -->
-        <Text layoutX="816.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="currentHighScore" text="Highscore Global" wrappingWidth="177.7999633789061" AnchorPane.rightAnchor="6.200036621093886">
+        <Text layoutX="816.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="currentHighScore" text="Highscore Global" textAlignment="CENTER" wrappingWidth="177.7999633789061" AnchorPane.rightAnchor="6.200036621093886">
             <font>
                 <Font size="28.0" />
             </font>
         </Text>
-        <Text fx:id="globalHighScoreTextField" layoutX="889.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="globalHigh" text="0" AnchorPane.rightAnchor="84.0">
+        <Text fx:id="globalHighScoreTextField" layoutX="893.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="globalHigh" text="0" AnchorPane.rightAnchor="85.96484375">
             <font>
                 <Font size="28.0" />
             </font>
