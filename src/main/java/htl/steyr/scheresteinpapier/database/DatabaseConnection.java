@@ -20,6 +20,12 @@ public class DatabaseConnection {
 
     private static Connection connection = null;
 
+
+    /**
+     * Establishes and returns a connection to the MySQL database.
+     * @return Connection object to the database
+     * @throws SQLException if a database access error occurs
+     */
     public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
             try {
@@ -32,13 +38,10 @@ public class DatabaseConnection {
         return connection;
     }
 
-    public static void closeConnection() {
-        if (connection != null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+
+
 }
+
+
+
+

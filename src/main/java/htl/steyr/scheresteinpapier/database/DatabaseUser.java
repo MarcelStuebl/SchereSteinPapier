@@ -8,27 +8,12 @@ import java.util.List;
 
 public class DatabaseUser {
 
-
-    public List<User> getAllUsers() throws SQLException {
-        List<User> users = new ArrayList<>();
-        String query = "SELECT id, username, highscore FROM user";
-
-        try (Connection conn = DatabaseConnection.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-
-            while (rs.next()) {
-                User user = new User(
-                        rs.getInt("id"),
-                        rs.getString("username"),
-                        rs.getInt("highscore")
-                );
-                users.add(user);
-            }
-        }
-        return users;
-    }
-
+    /**
+     * Retrieves a user by their username from the database.
+     * @param username The username of the user to retrieve.
+     * @return A User object representing the user, or null if not found.
+     * @throws SQLException if a database access error occurs.
+     */
     public User getUser(String username) throws SQLException {
         String query = "SELECT id, username, highscore FROM user WHERE username = ?";
 
@@ -49,6 +34,12 @@ public class DatabaseUser {
         return user;
     }
 
+
+    /**
+     * Retrieves the user with the highest score from the database.
+     * @return A User object representing the user with the highest score.
+     * @throws SQLException if a database access error occurs.
+     */
     public User getBestUser() throws SQLException {
         String query = "SELECT id, username, highscore FROM user ORDER BY highscore DESC LIMIT 1";
 
@@ -68,6 +59,13 @@ public class DatabaseUser {
         return user;
     }
 
+
+    /**
+     * Retrieves the top users based on their high scores.
+     * @param limit The maximum number of users to retrieve.
+     * @return A list of User objects representing the top users.
+     * @throws SQLException if a database access error occurs.
+     */
     public List<User> getBestUsers(int limit) throws SQLException {
         List<User> users = new ArrayList<>();
         String query = "SELECT id, username, highscore FROM user ORDER BY highscore DESC LIMIT ? ";
@@ -90,6 +88,11 @@ public class DatabaseUser {
     }
 
 
+    /**
+     * Adds a new user to the database.
+     * @param user The User object to be added.
+     * @throws SQLException if a database access error occurs.
+     */
     public void addUser(User user) throws SQLException {
         String query = "INSERT INTO user (username, highscore) VALUES (?, ?)";
 
@@ -108,6 +111,12 @@ public class DatabaseUser {
         }
     }
 
+
+    /**
+     * Updates the high score of an existing user in the database.
+     * @param user The User object with updated high score.
+     * @throws SQLException if a database access error occurs.
+     */
     public void updateUserScore(User user) throws SQLException {
         String query = "UPDATE user SET highscore = ? WHERE id = ?";
 
@@ -121,9 +130,8 @@ public class DatabaseUser {
     }
 
 
-
-
-
-
-
 }
+
+
+
+
