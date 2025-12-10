@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="1000.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.scheresteinpapier.GameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="779.0" prefWidth="1000.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.scheresteinpapier.GameController">
     <children>
         <Button fx:id="schereButton" layoutX="112.0" layoutY="593.0" mnemonicParsing="false" onAction="#schereButtonPressed" prefHeight="150" prefWidth="150" styleClass="schere-button" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="100.0" />
 
@@ -25,7 +25,7 @@
 
         <ImageView fx:id="playerShowGesture" fitHeight="150.0" fitWidth="150.0" layoutX="425.0" layoutY="593.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" styleClass="gesture-Icons" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="425.0" AnchorPane.rightAnchor="425.0" />
 
-        <ImageView fx:id="botShowGesture" fitHeight="150.0" fitWidth="150.0" layoutX="425.0" layoutY="173.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" styleClass="gesture-Icons" AnchorPane.leftAnchor="425.0" AnchorPane.rightAnchor="425.0" />
+        <ImageView fx:id="botShowGesture" fitHeight="150.0" fitWidth="150.0" layoutX="425.0" layoutY="152.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" styleClass="gesture-Icons" AnchorPane.leftAnchor="425.0" AnchorPane.rightAnchor="425.0" />
 
         <Button fx:id="resetButton" layoutX="385.0" layoutY="466.0" mnemonicParsing="false" onAction="#resetButtonPressed" prefHeight="64.0" prefWidth="230.0" styleClass="reset-button" text="Reset" textAlignment="CENTER" visible="false" AnchorPane.bottomAnchor="249.0" AnchorPane.leftAnchor="385.0" AnchorPane.rightAnchor="385.0" AnchorPane.topAnchor="466.0">
             <font>
@@ -103,15 +103,17 @@
         </Text>
 
         <!-- Bot highscore / current run (IDs match Controller fields) -->
-        <Text layoutX="816.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="currentHighScore" text="Highscore Global" wrappingWidth="177.7999633789061" AnchorPane.rightAnchor="6.200036621093886">
+        <Text layoutX="816.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="currentHighScore" text="Highscore Global" textAlignment="CENTER" wrappingWidth="177.7999633789061" AnchorPane.rightAnchor="6.200036621093886">
             <font>
                 <Font size="28.0" />
             </font>
         </Text>
-        <Text fx:id="globalHighScoreTextField" layoutX="889.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="globalHigh" text="0" AnchorPane.rightAnchor="84.0">
+        <Text fx:id="globalHighScoreTextField" layoutX="893.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="globalHigh" text="0" AnchorPane.rightAnchor="85.96484375">
             <font>
                 <Font size="28.0" />
             </font>
         </Text>
+      <Text fx:id="textWhoIsYou" layoutX="489.0" layoutY="589.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textWhoIs" text="You" visible="false" AnchorPane.leftAnchor="489.0" AnchorPane.rightAnchor="487.609375" />
+      <Text fx:id="textWhoIsBot" layoutX="491.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textWhoIs" text="Bot" visible="false" AnchorPane.leftAnchor="488.8" AnchorPane.rightAnchor="485.674609375" />
     </children>
 </AnchorPane>

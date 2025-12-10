@@ -27,6 +27,8 @@ import java.util.logging.Logger;
 
 
 public class GameController implements Initializable {
+    public Text textWhoIsYou;
+    public Text textWhoIsBot;
     @FXML private Button schereButton;
     @FXML private Button steinButton;
     @FXML private Button papierButton;
@@ -238,6 +240,8 @@ public class GameController implements Initializable {
         showButtons();
         resetButton.setVisible(false);
         winnerTextField.setText("");
+        textWhoIsBot.setVisible(false);
+        textWhoIsYou.setVisible(false);
     }
 
     /**
@@ -396,6 +400,8 @@ public class GameController implements Initializable {
             }
             showGesture(bot.getSelectedGesture(), botShowGesture);
             showGesture(player.getSelectedGesture(), playerShowGesture);
+            textWhoIsYou.setVisible(true);
+            textWhoIsBot.setVisible(true);
             if (getWinner() == player) {
                 playerWin();
             } else if (getWinner() == bot) {
