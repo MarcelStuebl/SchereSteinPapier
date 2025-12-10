@@ -232,7 +232,7 @@ public class GameController implements Initializable {
      * Resets the game state for a new round.
      * Hides the gestures, shows the buttons, and clears the winner text.
      */
-    private void resetButtonPressed() {
+    @FXML private void resetButtonPressed() {
         playerShowGesture.setVisible(false);
         botShowGesture.setVisible(false);
         showButtons();
