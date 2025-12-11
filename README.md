@@ -7,9 +7,8 @@
 [![Java](https://img.shields.io/badge/Java-17+-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
 [![JavaFX](https://img.shields.io/badge/JavaFX-21-007396?style=for-the-badge&logo=java&logoColor=white)](https://openjfx.io/)
 [![Maven](https://img.shields.io/badge/Maven-3.9+-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)](https://maven.apache.org/)
-[![License](https://img.shields.io/badge/License-Educational-blue?style=for-the-badge)](LICENSE)
 
-*A classic hand game with a twist – featuring the "Well" extension! *
+*A classic hand game with a twist – featuring the "Well" extension!*
 
 ---
 
@@ -21,7 +20,7 @@
 
 ## 📖 About
 
-**Rock Paper Scissors** (*Schere Stein Papier*) is a desktop application that brings the classic hand game to your screen with a modern JavaFX interface. This project extends the traditional game with the **Well** (*Brunnen*) option, adding an extra layer of strategy! 
+**Rock Paper Scissors** (*Schere Stein Papier*) is a desktop application that brings the classic hand game to your screen with a modern JavaFX interface. This project extends the traditional game rules by adding the **Well** (*Brunnen*) element.
 
 This game was developed as part of the **ITP (Informationstechnische Projekte)** course at **[HTBLA Steyr](https://www.htl-steyr.ac.at/)**, Austria.
 
@@ -35,7 +34,7 @@ This game was developed as part of the **ITP (Informationstechnische Projekte)**
 |---------|-------------|
 | 🎨 **Clean UI** | Modern, intuitive JavaFX interface with smooth animations |
 | 🤖 **Bot Opponent** | Play against a randomized computer opponent |
-| 🏆 **High Score System** | Track your winning streak with persistent high scores |
+| 🏆 **High Score System** | Track your winning streak with persistent high scores (Database supported) |
 | 🎵 **Background Music** | Immersive audio experience with volume control |
 | ⏳ **Progress Animation** | Suspenseful reveal with animated progress bar |
 | 🖼️ **Visual Gestures** | Beautiful icons for all game gestures |
@@ -54,18 +53,6 @@ The game follows the classic **Rock Paper Scissors** rules with an additional **
 🕳️  Well      →  beats  →  Scissors & Rock, loses to Paper
 ```
 
-<details>
-<summary><b>📊 Full Win Matrix</b></summary>
-
-| Player ↓ / Bot → | Scissors | Rock | Paper | Well |
-|------------------|----------|------|-------|------|
-| **Scissors** | Draw | ❌ Lose | ✅ Win | ❌ Lose |
-| **Rock** | ✅ Win | Draw | ❌ Lose | ❌ Lose |
-| **Paper** | ❌ Lose | ✅ Win | Draw | ✅ Win |
-| **Well** | ✅ Win | ✅ Win | ❌ Lose | Draw |
-
-</details>
-
 ---
 
 ## 🚀 Installation
@@ -74,6 +61,7 @@ The game follows the classic **Rock Paper Scissors** rules with an additional **
 
 - ☕ **Java 17** or higher ([Download](https://adoptium.net/))
 - 📦 **Maven 3.9+** (or use included Maven Wrapper)
+- 🗄️ **SQL Database** (required for High Scores)
 - 💻 **Windows / macOS / Linux**
 
 ### Quick Start
@@ -84,53 +72,26 @@ The game follows the classic **Rock Paper Scissors** rules with an additional **
    cd SchereSteinPapier
    ```
 
-2.  **Run the game**
+2. **Setup Database**
+   To enable high score tracking, you need to create the database table. Run the following SQL command in your database:
    
-   **Windows:**
-   ```cmd
-   .\mvnw.cmd javafx:run
+   ```sql
+   CREATE TABLE highscores (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       username VARCHAR(256) NOT NULL,
+       highscore INT NOT NULL
+   );
    ```
+
+3. **Update the database settings!**
+   Change the values in the .env:
    
-   **macOS/Linux:**
-   ```bash
-   ./mvnw javafx:run
+   ```.env
+   DB_HOST=HERE YOUR HOSTNAME
+   DB_DATABASE=HERE YOUR DATABASENAME
+   DB_USER=HERE YOUR USERNAME
+   DB_PASSWORD=HERE YOUR PASSWORD
    ```
-
-**3. Build executable JAR** *(optional)*
-   ```bash
-   ./mvnw clean package
-   ```
-
-### IDE Setup
-
-<details>
-<summary><b>🧠 IntelliJ IDEA</b></summary>
-
-1. Open the project folder in IntelliJ IDEA
-2.  Wait for Maven to import dependencies
-3. Navigate to `src/main/java/htl/steyr/scheresteinpapier/Launcher.java`
-4. Right-click and select **Run 'Launcher. main()'**
-
-</details>
-
-<details>
-<summary><b>🌙 Eclipse</b></summary>
-
-1.  Import as **Existing Maven Project**
-2. Wait for dependencies to download
-3.  Run `Launcher.java` as Java Application
-
-</details>
-
-<details>
-<summary><b>💻 VS Code</b></summary>
-
-1. Install **Extension Pack for Java** and **JavaFX Support**
-2. Open the project folder
-3. Run via Maven: `./mvnw javafx:run`
-
-</details>
-
 ---
 
 ## 🎮 How to Play
@@ -146,14 +107,6 @@ The game follows the classic **Rock Paper Scissors** rules with an additional **
 5. **Track** your winning streak on the scoreboard
 6. **Reset** and play again! 
 
-### 🎛️ Controls
-
-| Button | Action |
-|--------|--------|
-| `Scissors` / `Rock` / `Paper` / `Well` | Select your gesture |
-| `Reset` | Start a new round |
-| `Volume Slider` | Adjust background music |
-
 ---
 
 ## 🏗️ Architecture
@@ -162,92 +115,37 @@ The game follows the classic **Rock Paper Scissors** rules with an additional **
 
 ```
 SchereSteinPapier/
-├── 📁 src/
-│   ├── 📁 main/
-│   │   ├── 📁 java/htl/steyr/scheresteinpapier/
-│   │   │   ├── 📄 Launcher.java                         # Application entry point
-│   │   │   ├── 📄 GameApplication.java                  # JavaFX Application class
-│   │   │   ├── 📄 GameController.java                   # Main game logic & UI control
-│   │   │   ├── 📄 Player.java                           # Player model with gesture
-│   │   │   └── 📁 Model/
-│   │   │       └── 📄 Gesture.java                      # Gesture data class
-│   │   └── 📁 resources/htl/steyr/scheresteinpapier/
-│   │       ├── 📄 game-view.fxml                        # UI layout definition
-│   │       ├── 📄 style.css                             # Custom styling
-│   │       └── 📁 img/                                  # Gesture icons & assets
-├── 📄 pom.xml                                           # Maven configuration
-├── 📄 mvnw / mvnw.cmd                                   # Maven Wrapper scripts
-├── 📄 Spielbeschreibung Schere Stein Papier.pdf         # Game documentation (German)
-└── 📄 README.md                                         # You are here! 
+├── 📁src/ main/
+│   ├── 📁java/htl/steyr/scheresteinpapier/
+│   │   ├── 📁database/
+│   │   │   ├── 📄DatabaseConnection.java
+│   │   │   └── 📄DatabaseUser.java
+│   │   │
+│   │   ├── 📁Model/
+│   │   │   ├── 📄Gesture.java
+│   │   │   ├── 📄Player.java
+│   │   │   └── 📄User.java
+│   │   │
+│   │   ├── 📄GameController.java
+│   │   ├── 📄Launcher.java
+│   │   ├── 📄StartApplication.java
+│   │   └── 📄StartController.java
+│   │
+│   └── 📁resources/htl/steyr/scheresteinpapier/
+│       ├── 📁img/
+│       ├── 📁sound/
+│       ├── 📄game-view.fxml
+│       ├── 📄start-view.fxml
+│       ├── 📄style.css
+│       └── 📄styleLogin.css
+│
+├── 📄.env
+├── 📄.gitignore
+├── 📄pom.xml
+├── 📄README.md
+└── 📄Spielebeschreibung Schere Stein Papier.pdf
+
 ```
-
-### Component Overview
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      GameApplication                        │
-│                    (JavaFX Entry Point)                     │
-└─────────────────────────┬───────────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────────┐
-│                     GameController                          │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │   UI Logic  │  │ Game Logic  │  │   Animation/Audio   │  │
-│  │  - Buttons  │  │  - Winner   │  │  - Progress Bar     │  │
-│  │  - Display  │  │  - Score    │  │  - Background Music │  │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
-└─────────────────────────┬───────────────────────────────────┘
-                          │
-          ┌───────────────┴───────────────┐
-          ▼                               ▼
-┌─────────────────┐             ┌─────────────────┐
-│     Player      │             │     Player      │
-│     (Human)     │             │      (Bot)      │
-│  ┌───────────┐  │             │  ┌───────────┐  │
-│  │  Gesture  │  │             │  │  Gesture  │  │
-│  └───────────┘  │             │  └───────────┘  │
-└─────────────────┘             └─────────────────┘
-```
-
-### 🔧 Technologies Used
-
-| Technology | Purpose |
-|------------|---------|
-| **Java 17+** | Core programming language |
-| **JavaFX 21** | GUI framework |
-| **Maven** | Build automation & dependency management |
-| **FXML** | Declarative UI layout |
-| **CSS** | UI styling |
-
----
-
-## 🛠️ Development
-
-### Building & Running
-
-```bash
-# Clean and compile
-./mvnw clean compile
-
-# Run tests
-./mvnw test
-
-# Package as JAR
-./mvnw clean package
-
-# Run the application
-./mvnw javafx:run
-```
-
-### 🎨 Customization
-
-| What | Where |
-|------|-------|
-| UI Layout | `src/main/resources/htl/steyr/scheresteinpapier/game-view.fxml` |
-| Styling | `src/main/resources/htl/steyr/scheresteinpapier/style.css` |
-| Game Logic | `src/main/java/htl/steyr/scheresteinpapier/GameController.java` |
-| Assets | `src/main/resources/htl/steyr/scheresteinpapier/img/` |
 
 ---
 
@@ -282,23 +180,7 @@ SchereSteinPapier/
 
 ## 🏫 About HTBLA Steyr
 
-This project was created as part of the **ITP (Informationstechnische Projekte)** course at **[HTBLA Steyr](https://www.htl-steyr.ac.at/)**, a technical college in Upper Austria specializing in mechanical engineering, mechatronics, and information technology.
+This project was created as part of the **ITP (Informationstechnische Projekte)** course at **[HTBLA Steyr](https://www.htl-steyr.ac.at/)**, a technical college in Upper Austria specializing in mechanical engineering, electronics, and IT.
 
 ---
 
-## 📝 License
-
-This project was created for educational purposes at HTBLA Steyr.  
-For licensing inquiries, please contact the authors.
-
----
-
-<div align="center">
-
-**Made with ☕ Java and 💙 at HTBLA Steyr**
-
-⭐ **Star this repo if you enjoyed the game!** ⭐
-
-[⬆ Back to Top](#-rock-paper-scissors-well)
-
-</div>
