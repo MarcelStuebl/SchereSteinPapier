@@ -61,7 +61,7 @@ The game follows the classic **Rock Paper Scissors** rules with an additional **
 
 - ☕ **Java 17** or higher ([Download](https://adoptium.net/))
 - 📦 **Maven 3.9+** (or use included Maven Wrapper)
-- 🗄️ **SQL Database** (required for High Scores)
+- 🗄️ **MYSQL Database** (required for High Scores)
 - 💻 **Windows / macOS / Linux**
 
 ### Quick Start
